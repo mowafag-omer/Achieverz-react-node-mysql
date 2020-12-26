@@ -25,4 +25,3 @@ frontend/yarn-error.log*
 
 backend/.DS_Store
 backend/node_modules
-backend/package.json
