@@ -16,3 +16,67 @@ content-type: application/json
   "email": "admin@a.com",
   "password": "pass"
 }
+
+###
+
+POST http://localhost:3000/fl/create-profile HTTP/1.1
+content-type: application/json
+
+{
+  "fname": "flan",
+  "lname": "alflani",
+  "email": "dev@dev.com",
+  "phone_num": "+465645",
+  "country": "sudan",
+  "city": "omdour",
+  "profile_title": "dev",
+  "sector": "web dev",
+  "skills": ["fr","en","ar"],
+  "languages": ["fr","en","ar"],
+  "user_id": 2
+}
+
+###
+
+POST http://localhost:3000/fl/add-experiences HTTP/1.1
+content-type: application/json
+
+{
+  "experiences": [
+    {
+      "sector": "web dev",
+      "employer": "devboite",
+      "description": "alfladfgdfgdfg dfgdfgni",
+      "skills": "fr",
+      "from_date": "2018-05-25",
+      "to_date": "2019-01-09",
+      "user_id": 2
+    },
+    {
+      "sector": "mobile dev",
+      "employer": "tech2",
+      "description": "alfladfgdfgdfg dfgdfgni",
+      "skills": "en",
+      "from_date": "2019-06-05",
+      "to_date": "2020-01-28",
+      "user_id": 2
+    }
+  ]
+}
+
+###
+
+POST http://localhost:3000/fl/add-education HTTP/1.1
+content-type: application/json
+
+{
+  "education": [
+    {
+      "title": "dev",
+      "institution": "simplon",
+      "country": "frence",
+      "graduation_year": "2021",
+      "user_id": 2
+    }
+  ]
+}
