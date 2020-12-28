@@ -80,3 +80,18 @@ content-type: application/json
     }
   ]
 }
+
+###
+
+POST http://localhost:3000/em/create-profile HTTP/1.1
+content-type: application/json
+
+{
+  "fname": "flan",
+  "lname": "alflani",
+  "email": "dev@dev.com",
+  "phone_num": "465645",
+  "country": "sudan",
+  "city": "omdour",
+  "user_id": 3
+}
