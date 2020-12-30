@@ -4,7 +4,7 @@ const db = require("../db_config")
 const router = express.Router()
 
 router.post('/post-job', (req, res) => {
-  sql = `INSERT INTO jobs (job_title, job_description, required_sector, required_skills, num_freelancer_required, duration, budget, job_status, posting_date, user_id) VALUES ?`
+  sql = `INSERT INTO jobs (job_title, job_description, required_sector, required_skills, num_freelancer_required, duration, budget, job_status, user_id) VALUES ?`
   
   db.query(sql, [[Object.values(req.body)]], (err, results) => {
     if (err) throw err 
@@ -17,7 +17,7 @@ router.post('/post-job', (req, res) => {
   
   db.query(sql, (err, results) => {
     if (err) throw err 
-    res.status(201).json()
+    res.status(200).json()
   })  
 })
 

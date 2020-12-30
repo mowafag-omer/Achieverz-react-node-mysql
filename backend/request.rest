@@ -95,3 +95,25 @@ content-type: application/json
   "city": "omdour",
   "user_id": 3
 }
+
+###
+
+POST http://localhost:3000/job/post-job HTTP/1.1
+content-type: application/json
+
+{
+  "job_title": "job1",
+  "job_description": "alflsdfsdfsdf fdsfdsfani",
+  "required_sector": "dev web",
+  "required_skills": "react",
+  "num_freelancer_required": "1",
+  "duration": "one week",
+  "budget": 1000,
+  "job_status": "in process",
+  "user_id": 3
+}
+
+###
+
+DELETE http://localhost:3000/job/delete-job/2 HTTP/1.1
+content-type: application/json

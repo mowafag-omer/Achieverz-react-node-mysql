@@ -19,7 +19,7 @@ router.post('/create-profile', (req, res) => {
 
   db.query(sql, (err, results) => {
     if (err) throw err
-    res.status(201).json(results) 
+    res.status(200).json(results) 
   })
 })
 
