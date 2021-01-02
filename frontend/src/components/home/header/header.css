@@ -1,1 +1,14 @@
-/* No CSS *//*# sourceMappingURL=header.css.map */
+.jumbotron .form-control {
+  border-radius: 5px 0 0 5px;
+  height: 8vh;
+}
+
+.jumbotron .btn {
+  border-radius: 0 5px 5px 0;
+  height: 8vh;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: 18%;
+}
+/*# sourceMappingURL=header.css.map */

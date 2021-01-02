@@ -1,11 +1,13 @@
 import Routes from '../../routes'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import UserContextProvider from '../../contexts/userContext';
 import './app.css'
 
 function App() {
   return (
     <div>
-      <Routes />
+      <UserContextProvider>
+        <Routes />
+      </UserContextProvider>
     </div>
   )
 }

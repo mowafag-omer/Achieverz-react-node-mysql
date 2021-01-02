@@ -15,11 +15,11 @@ router
     db.query(selectsql, (err, results) => {
       if (err) throw err
       if (results.length) {
-        res.status(409).json({ err_msg: "This email already registered !" })
+        res.status(409).json("This email already registered !")
       } else {
         db.query(insertsql, (err) => {
           if (err) throw err
-          res.status(201).json({ succ_msg: "successfully registered" })
+          res.status(201).json("successfully registered")
         })
       }
     })
