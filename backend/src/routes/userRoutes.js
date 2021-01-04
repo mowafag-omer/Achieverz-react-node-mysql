@@ -42,9 +42,9 @@ router
         )
         res.status(201).send({ token: token })
       } else if (!results[0]) {
-        res.status(404).send({ msg: "Sorry, this user isn't recognized" })
+        res.status(404).send("Sorry, this user isn't recognized")
       } else {
-        res.status(401).send({ msg: "Wrong password, try again !" })
+        res.status(401).send("Wrong password, try again !")
       }
     })
   })

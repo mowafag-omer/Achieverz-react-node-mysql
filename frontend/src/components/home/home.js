@@ -1,9 +1,9 @@
 import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
-import MainNav from '../nav/nav'
-import Header from './header/header'
-import Categories from './categories/categories'
-import Footer from '../footer/footer';
+import MainNav from '../Nav/Nav'
+import Header from './Header/Header'
+import Categories from './Categories/Categories'
+import Footer from '../Footer/Footer'
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
             <Button variant="secondary" className="m-1">Trouver un job</Button>
           </Nav>
           <Nav>
-            <Nav.Link href="/login">Se conecter</Nav.Link> 
+            <Nav.Link href="/login">Se connecter</Nav.Link> 
             <Nav.Link eventKey={2} href="/Signup">S'inscrire</Nav.Link>
             {/* <Link className="nav-link" to="/login">Se conecter</Link>
             <Link className="nav-link" to="/Signup">S'inscrire</Link> */}

@@ -1,5 +1,5 @@
 import Routes from '../../routes'
-import UserContextProvider from '../../contexts/userContext';
+import UserContextProvider from '../../contexts/UserContext';
 import './app.css'
 
 function App() {

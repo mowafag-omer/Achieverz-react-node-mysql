@@ -2,12 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Alert } from 'react-bootstrap'
-import Nav from '../nav/nav'
-import Footer from '../footer/footer'
-import { UserContext } from '../../contexts/userContext'
+import Nav from '../Nav/Nav'
+import Footer from '../Footer/Footer'
+import { UserContext } from '../../contexts/UserContext'
 
 const Signup = () => {
-  const  { user, signUp }  = useContext(UserContext);
+  const  { user, signUp }  = useContext(UserContext)
 
   useEffect(() => {
     user.Signup_success && console.log("done") 
@@ -22,7 +22,7 @@ const Signup = () => {
   }
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string(5).required('Required'),
+    password: Yup.string().required('Required'),
     confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'Passwords must match').required('Required'),
     type: Yup.string().required('Required'),
   })
@@ -54,19 +54,19 @@ const Signup = () => {
             <ErrorMessage name='type'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>  
           <div className='mb-3'>
-            <Field type='email' id='email' name='email' 
+            <Field type='email' id='email' name='email' placeholder="Adresse Email" 
               className={touched.email && errors.email ? "border-danger form-control" : "form-control"} 
             />
             <ErrorMessage name='email'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>
           <div className='mb-3'>
-            <Field type='password' id='password' name='password' 
+            <Field type='password' id='password' name='password' placeholder="Mot de pass"
               className={touched.password && errors.password ? "border-danger form-control" : "form-control"} 
             />
             <ErrorMessage name='password'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>
           <div className='mb-3'>
-            <Field type='password' id='confirmPassword' name='confirmPassword'
+            <Field type='password' id='confirmPassword' name='confirmPassword' placeholder="Confirmation mot de pass"
               className={touched.confirmPassword && errors.confirmPassword ? "border-danger form-control" : "form-control"} 
             />
             <ErrorMessage name='confirmPassword'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
