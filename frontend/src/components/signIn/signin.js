@@ -1,19 +1,23 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/Footer'
-import { UserContext } from '../../contexts/UserContext'
+import { useSelector, useDispatch } from 'react-redux'
+import { signIn } from '../../store/actions/authActions'
 
-const Signin = () => {
-  const  { user, signIn }  = useContext(UserContext)
+const Signin = (props) => {
+  const dispatch = useDispatch()
+
+  const user = useSelector(state => state.auth)
+  const error = useSelector(state => state.error)
 
   useEffect(() => {
-    user.Signup_success && console.log("done") 
-    user.signup_error && console.log(user.signup_error)
-  })
+    user.isAuthenticated && user.type === 'employer' && 
+      props.history.push("/EmployerDashboard")
+  }, [user])
 
   const initialValues = {
     email: '',
@@ -26,7 +30,7 @@ const Signin = () => {
   })
 
   const onSubmit = (values, actions) => {
-    signIn(values)
+    dispatch(signIn(values))
     actions.setFieldValue('password', '')
   }
 
@@ -36,7 +40,9 @@ const Signin = () => {
       <div className="bg-light d-flex flex-column justify-content-center" style={{height: "90vh"}}>
         <h4 className="text-center">Se connecter</h4>
         <hr className="w-50 mb-5"></hr>
-        {user.signin_error && <Alert variant="danger" className='w-50 ml-auto mr-auto mb-4'>{user.signin_error}</Alert>}
+        {error.id === 'SIGNIN_FAIL' && 
+          <Alert variant="danger" className='w-50 ml-auto mr-auto mb-4'>{error.msg}</Alert>
+        }
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

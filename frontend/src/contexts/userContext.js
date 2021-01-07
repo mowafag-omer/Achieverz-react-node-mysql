@@ -14,9 +14,9 @@ const UserContextProvider = (props) => {
   })
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    token && setUser({...user, signin_error: null, isAuthenticated: true, token})
-  }, [user.token])
+    // const token = localStorage.getItem('token')
+    // token && setUser({...user, signin_error: null, isAuthenticated: true, token})
+  })
 
   const signUp = async (data) => {
     try {
