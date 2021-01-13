@@ -1,0 +1,16 @@
+.modal-dialog {
+  margin-right: 15vw;
+  margin-left: 15vw;
+}
+
+.modal-content {
+  width: 70vw !important;
+  height: 90VH !important;
+}
+
+.modal-body {
+  overflow: auto;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+/*# sourceMappingURL=postProject.css.map */

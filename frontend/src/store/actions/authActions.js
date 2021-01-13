@@ -9,34 +9,34 @@ import {
   AUTH_ERROR,
   SIGN_OUT 
 } from '../types'
+import { loadEmployer } from './employerActions'
 import { returnErrors } from './errorActions'
 
 const config = {headers: {'Content-Type': 'application/json'}}
 
 export const loadUser = (token) => (dispatch) => {
   if(token){
-    dispatch({type: USER_LOADED})   
     jwt.verify(token, 'itssecretso', function(err, decoded) {
       if(err) return dispatch({ type: AUTH_ERROR })
       const { userId, email, type } = decoded
       dispatch({
         type: USER_LOADED,
         payload: {userId, email, type} 
-      })   
+      })
+      type === 'employer' && dispatch(loadEmployer(userId))   
     })
   } else {
     dispatch({ type: AUTH_ERROR })
   }
 }
 
-export const signIn = ({ email, password }) => (dispatch) => { 
-  axios.post('http://localhost:3001/user/sign-in', {email, password}, config)
+export const signIn = ({ email, password, type }) => (dispatch) => { 
+  axios.post('http://localhost:3001/user/sign-in', {email, password, type}, config)
   .then(res => {
     dispatch({
       type: SIGNIN_SUCCESS,
       payload: res.data
     })
-    dispatch(loadUser(res.data.token))
   })
   .catch(err => {
     const { data, status } = err.response

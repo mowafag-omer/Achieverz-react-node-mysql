@@ -1,12 +1,13 @@
 import React from 'react'
 import { Navbar } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './nav.css'
 
 const HomeNav = ({ children }) => {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Achivierz</Navbar.Brand>
+        <Link to='/'><Navbar.Brand>Achivierz</Navbar.Brand></Link>
         { children }
       </Navbar>
     </>

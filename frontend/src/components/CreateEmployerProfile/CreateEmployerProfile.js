@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { Formik, Form, Field } from 'formik'
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import Nav from '../Nav/Nav'
-import Footer from '../Footer/Footer'
 
 const CreateEmployerProfile = () => {
   const initialValues = {
@@ -12,6 +10,9 @@ const CreateEmployerProfile = () => {
     phone: '',
     country: '',
     city: '',
+    isCompany: 0,
+    companyName: '',
+    location: ''
   }
 
   const validationSchema = Yup.object({
@@ -21,6 +22,14 @@ const CreateEmployerProfile = () => {
     phone: Yup.number('phone must be a number').required('Required'),
     country: Yup.string().required('Required'),
     city: Yup.string().required('Required'),
+    companyName: Yup.string().when('isCompany', {
+      is: (isCompany) => isCompany,
+      then: Yup.string().required('Field is required')            
+    }),
+    location: Yup.string().when('isCompany', {
+      is: (isCompany) => isCompany,
+      then: Yup.string().required('Field is required')            
+    })
   })
 
   const onSubmit = (values, submitProps) => {
@@ -29,7 +38,6 @@ const CreateEmployerProfile = () => {
 
   return (
     <>
-      <Nav /> 
       <div className="bg-light  d-flex flex-column" style={{minHeight: "90vh"}}>
         <h4 className="text-center mt-4">Créez votre profile</h4>
         <hr className="w-50 mb-4"></hr>
@@ -40,44 +48,74 @@ const CreateEmployerProfile = () => {
               <Field type='text' id='fname' name='fname' placeholder="Prénom" 
                 className={touched.fname && errors.fname ? "border-danger form-control" : "form-control"} 
               />
-              {errors.fname && <div className="text-danger">{errors.fname}</div>}
+              <ErrorMessage name='fname'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>
             </div>
             <div className="mb-3">
               <Field type='text' id='lname' name='lname' placeholder="Nom" 
                 className={touched.lname && errors.lname ? "border-danger form-control" : "form-control"} 
               />
-              {errors.lname && <div className="text-danger">{errors.lname}</div>}
+              <ErrorMessage name='lname'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>
             </div>
             <div className='mb-3'>
               <Field type='email' id='email' name='email' placeholder="Adresse Email"
                 className={touched.email && errors.email ? "border-danger form-control" : "form-control"} 
               />
-              {errors.email && <div className="text-danger">{errors.email}</div>}
+              <ErrorMessage name='email'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>            
             </div>
             <div className='mb-3'>
               <Field type='text' id='phone' name='phone' placeholder="Numéro de téléphone"
                 className={touched.phone && errors.phone ? "border-danger form-control" : "form-control"} 
               />
-              {errors.phone && <div className="text-danger">{errors.phone}</div>}
+              <ErrorMessage name='email'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>            
             </div>
             <div className='mb-3'>
               <Field type='text' id='country' name='country' placeholder="Pays"
                 className={touched.country && errors.country ? "border-danger form-control" : "form-control"} 
               />
-              {errors.country && <div className="text-danger">{errors.country}</div>}
+              <ErrorMessage name='country'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>            
             </div>
             <div className='mb-3'>
               <Field type='text' id='city' name='city' placeholder="Vills"
                 className={touched.city && errors.city ? "border-danger form-control" : "form-control"} 
               />
-              {errors.city && <div className="text-danger">{errors.city}</div>}
+              <ErrorMessage name='city'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>            
+            </div>
+            <div className='mb-3'>
+              <Field type="checkbox" name="isCompany" value='1'/> Entreprise
+            </div>
+            <div className="mb-3">
+              <Field type='text' name='companyName' placeholder=" Nom de l'entreprise" 
+                className={touched.companyName && errors.companyName ? "border-danger form-control" : "form-control"} 
+              />
+              <ErrorMessage name='companyName'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>
+            </div>
+            <div className="mb-3">
+              <Field type='text' name='location' placeholder="Adresse" 
+                className={touched.location && errors.location ? "border-danger form-control" : "form-control"} 
+              />
+              <ErrorMessage name='location'>
+                {error => <div className="text-danger">{error}</div>}
+              </ErrorMessage>
             </div>
             <button className="btn btn-success mr-auto" type='submit'>Valider</button>
           </Form>
         )}}
         </Formik>
       </div>
-      <Footer />
     </>
   )
 }

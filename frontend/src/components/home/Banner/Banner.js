@@ -1,10 +1,10 @@
 import React from 'react'
 import { Jumbotron, Container, Form, FormControl, Button } from 'react-bootstrap'
-import './header.css'
+import './Banner.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const Home = () => {
+const Banner = () => {
   return (
     <Jumbotron className="mb-0" fluid>
       <Container>
@@ -21,4 +21,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Banner

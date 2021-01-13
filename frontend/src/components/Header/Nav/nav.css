@@ -1,0 +1,6 @@
+.navbar-collapse {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+/*# sourceMappingURL=nav.css.map */

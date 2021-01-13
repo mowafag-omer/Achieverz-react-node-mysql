@@ -1,4 +1,4 @@
-POST http://localhost:3000/user/sign-up HTTP/1.1
+POST http://localhost:3001/user/sign-up HTTP/1.1
 content-type: application/json
 
 {
@@ -9,7 +9,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/user/sign-in HTTP/1.1
+POST http://localhost:3001/user/sign-in HTTP/1.1
 content-type: application/json
 
 {
@@ -19,7 +19,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/fl/create-profile HTTP/1.1
+POST http://localhost:3001/fl/create-profile HTTP/1.1
 content-type: application/json
 
 {
@@ -38,7 +38,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/fl/add-experiences HTTP/1.1
+POST http://localhost:3001/fl/add-experiences HTTP/1.1
 content-type: application/json
 
 {
@@ -66,7 +66,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/fl/add-education HTTP/1.1
+POST http://localhost:3001/fl/add-education HTTP/1.1
 content-type: application/json
 
 {
@@ -83,7 +83,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/em/create-profile HTTP/1.1
+POST http://localhost:3001/em/create-profile HTTP/1.1
 content-type: application/json
 
 {
@@ -98,7 +98,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/job/post-job HTTP/1.1
+POST http://localhost:3001/job/post-job HTTP/1.1
 content-type: application/json
 
 {
@@ -115,5 +115,10 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/job/delete-job/2 HTTP/1.1
+DELETE http://localhost:3001/job/delete-job/2 HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3001/em/employer/3 HTTP/1.1
 content-type: application/json

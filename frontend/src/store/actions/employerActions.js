@@ -1,9 +1,28 @@
 import axios from 'axios'
-import { EM_CREATE_SUCCESS  } from '../types'
+import {
+  EM_CREATE_SUCCESS,
+  AUTH_ERROR,
+  EMPLOYER_LOADED,
+  EM_NOT_FOUNDED
+} from "../types"
 // import { returnErrors } from './errorActions'
 
 export const emCreateProfile = (body) => dispatch => {
   axios.post('http://localhost:3001/em/create-profile', body)
   .then(() => dispatch({ type: EM_CREATE_SUCCESS }))
+  .catch(() => dispatch({ type: AUTH_ERROR }))
+}
+
+export const loadEmployer = (id) => dispatch => {
+  axios.get(`http://localhost:3001/em/employer/${id}`)
+  .then((res) => {
+    console.log();
+    res.status === 204 && dispatch({ type: EM_NOT_FOUNDED })
+    res.status === 200 && 
+      dispatch({ 
+        type: EMPLOYER_LOADED,
+        payload: res.data
+      })
+  })
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }

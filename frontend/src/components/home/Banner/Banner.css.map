@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "AACA,AACE,UADQ,CACR,aAAa,CAAA;EACX,aAAa,EAAE,WAAW;EAC1B,MAAM,EAAE,GAAG;CACZ;;AAJH,AAKE,UALQ,CAKR,IAAI,CAAA;EACF,aAAa,EAAE,WAAW;EAC1B,MAAM,EAAE,GAAG;EACX,SAAS,EAAE,WAAW;EACtB,KAAK,EAAE,GAAG;CACX",
     "sources": [
-        "header.scss"
+        "Banner.scss"
     ],
     "names": [],
-    "file": "header.css"
+    "file": "Banner.css"
 }

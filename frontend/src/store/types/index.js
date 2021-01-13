@@ -10,6 +10,9 @@ export const SIGN_OUT = 'SIGN_OUT'
 
 //employer types
 export const EM_CREATE_SUCCESS = "EM_CREATE_SUCCESS"
+export const EMPLOYER_LOADING = "EMPLOYER_LOADING"
+export const EMPLOYER_LOADED = "EMPLOYER_LOADED"
+export const EM_NOT_FOUNDED = "EM_NOT_FOUNDED"
 
 // errors types
 export const GET_ERRORS = 'GET_ERRORS'

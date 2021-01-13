@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAA;EACX,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAK;CACnB;;AAED,AAAA,cAAc,CAAA;EACZ,KAAK,EAAE,eAAe;EACtB,MAAM,EAAE,eAAe;CACxB;;AAED,AAAA,WAAW,CAAA;EACT,QAAQ,EAAE,IAAI;EACd,aAAa,EAAE,EAAE;EACjB,YAAY,EAAE,EAAE;CACjB",
+    "sources": [
+        "postProject.scss"
+    ],
+    "names": [],
+    "file": "postProject.css"
+}
