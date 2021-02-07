@@ -1,19 +1,40 @@
 .modal-dialog{
-  margin-right: 15vw;
-  margin-left: 15vw ;
+  margin-right: 15vw !important;
+  margin-left: 15vw !important;
+  height: 90vh;
+  .modal-content{
+    width: 70vw !important;
+    height: 93VH !important;
+    .modal-body{
+      height: 70vh;
+      padding-right: 5%;
+      padding-left: 5%;
+      overflow: auto;
+      .form-label{
+        font-weight: bold;
+      }
+    }
+    .projectSum{
+      ul{
+        padding: 0;
+        list-style: none;
+        li{
+          margin: .7rem 0;
+          font-weight: 500;
+        }
+        .skills ul{
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          li{
+            border: 1px solid gray;
+            width: fit-content;
+            padding: .1rem .5rem;
+            margin: .3rem;
+          }
+        }
+        
+      }
+    }
+  }
 }
-
-.modal-content{
-  width: 70vw !important;
-  height: 90VH !important;
-}
-
-.modal-body{
-  overflow: auto;
-  padding-right: 5%;
-  padding-left: 5%;
-}
-
-// .form-control{
-//   width: 95%;
-// }

@@ -36,7 +36,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="bg-light d-flex flex-column justify-content-center" style={{height: "80.7vh"}}>
+    <div className="bg-light d-flex flex-column justify-content-center py-4" style={{minHeight: "80.7vh"}}>
       <div className="w-50 mx-auto p-3 rounded shadow">
         <h4 className="text-center">S'inscrire</h4>
         <hr className="w-100"></hr>

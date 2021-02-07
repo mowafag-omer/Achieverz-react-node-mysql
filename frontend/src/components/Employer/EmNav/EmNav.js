@@ -17,11 +17,11 @@ const EmNav = () => {
         </Nav>
       </Navbar>
       <Navbar bg="light" variant="light">
-      <Nav>
-        <Link className="nav-link" to="/EmployerDashboard">Dashboard</Link> 
-        <Link className="nav-link" to="/EmployerDashboard">Mes projects</Link> 
-        <Nav.Link onClick={() => dispatch(signOut())}>Déconnecter</Nav.Link>
-      </Nav>
+        <Nav>
+          <Link className="nav-link" to="/EmployerDashboard">Dashboard</Link> 
+          <Link className="nav-link" to="/EmProjects">Mes projects</Link> 
+          <Nav.Link onClick={() => dispatch(signOut())}>Déconnecter</Nav.Link>
+        </Nav>
       </Navbar>
     </>
   )

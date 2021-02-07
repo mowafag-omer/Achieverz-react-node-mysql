@@ -1,7 +1,7 @@
 const express = require("express")
-const db = require("../db_config")
-// const checkAuth = require('../middleware/checkAuth')
 const router = express.Router()
+const db = require("../db_config")
+const checkAuth = require('../middlewares/checkAuth')
 
 router.post('/create-profile', (req, res) => {
   sql = `INSERT INTO employers_profiles (first_name, last_name, email, phone_num, country, city, company, company_name, location, user_id) VALUES ?`
@@ -12,7 +12,7 @@ router.post('/create-profile', (req, res) => {
   })  
 })
 
-.get('/employer/:id', (req, res) => {
+.get('/employer/:id', checkAuth, (req, res) => {
   const sql = `SELECT * FROM employers_profiles WHERE user_id = '${req.params.id}'`
 
   db.query(sql, (err, results) => {

@@ -14,7 +14,12 @@ export const emCreateProfile = (body) => dispatch => {
 }
 
 export const loadEmployer = (id) => dispatch => {
-  axios.get(`http://localhost:3001/em/employer/${id}`)
+  axios.get(`http://localhost:3001/em/employer/${id}`, { 
+    headers: {
+      'Content-Type': 'application/json',
+      'auth' : localStorage.getItem('token')
+    }
+  })
   .then((res) => {
     console.log();
     res.status === 204 && dispatch({ type: EM_NOT_FOUNDED })
@@ -26,3 +31,10 @@ export const loadEmployer = (id) => dispatch => {
   })
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }
+
+// const config = { 
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'auth' : localStorage.getItem('token')
+//   }
+// }

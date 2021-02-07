@@ -1,16 +1,50 @@
 .modal-dialog {
-  margin-right: 15vw;
-  margin-left: 15vw;
+  margin-right: 15vw !important;
+  margin-left: 15vw !important;
+  height: 90vh;
 }
 
-.modal-content {
+.modal-dialog .modal-content {
   width: 70vw !important;
-  height: 90VH !important;
+  height: 93VH !important;
 }
 
-.modal-body {
-  overflow: auto;
+.modal-dialog .modal-content .modal-body {
+  height: 70vh;
   padding-right: 5%;
   padding-left: 5%;
+  overflow: auto;
+}
+
+.modal-dialog .modal-content .modal-body .form-label {
+  font-weight: bold;
+}
+
+.modal-dialog .modal-content .projectSum ul {
+  padding: 0;
+  list-style: none;
+}
+
+.modal-dialog .modal-content .projectSum ul li {
+  margin: .7rem 0;
+  font-weight: 500;
+}
+
+.modal-dialog .modal-content .projectSum ul .skills ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+}
+
+.modal-dialog .modal-content .projectSum ul .skills ul li {
+  border: 1px solid gray;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: .1rem .5rem;
+  margin: .3rem;
 }
 /*# sourceMappingURL=postProject.css.map */

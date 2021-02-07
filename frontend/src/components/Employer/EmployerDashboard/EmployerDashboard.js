@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {Card } from 'react-bootstrap'
 import ProfileWidget from '../EmProfileWidget/EmProfileWidget'
-import PostProject from '../PostProject/PostProject'
 
 export const EmployerDashboard = (props) => {
   const employer = useSelector(state => state.employer)

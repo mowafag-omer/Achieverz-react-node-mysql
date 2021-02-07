@@ -1,13 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 import Home from '../components/Home/Home'
 import Signin from '../components/Signin/Signin'
 import Signup from '../components/Signup/Signup'
 import CreateEmployerProfile from '../components/CreateEmployerProfile/CreateEmployerProfile'
 import EmployerDashboard from '../components/Employer/EmployerDashboard/EmployerDashboard'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+import EmProjects from '../components/Employer/EmProjects/EmProjects'
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/Signup" component={Signup} />
         <PrivateRoute path="/createEmProfile" component={CreateEmployerProfile} />
         <PrivateRoute path="/EmployerDashboard" component={EmployerDashboard} />
+        <PrivateRoute path="/EmProjects" component={EmProjects} />
       </Switch>
       <Footer />
     </Router>
