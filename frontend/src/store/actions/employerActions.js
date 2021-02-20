@@ -5,6 +5,7 @@ import {
   EMPLOYER_LOADED,
   EM_NOT_FOUNDED
 } from "../types"
+import { loadProjects, loadCategories } from '../../store/actions/projectAction'
 // import { returnErrors } from './errorActions'
 
 export const emCreateProfile = (body) => dispatch => {
@@ -21,13 +22,15 @@ export const loadEmployer = (id) => dispatch => {
     }
   })
   .then((res) => {
-    console.log();
+    console.log(res.data[0]);
     res.status === 204 && dispatch({ type: EM_NOT_FOUNDED })
     res.status === 200 && 
       dispatch({ 
         type: EMPLOYER_LOADED,
-        payload: res.data
+        payload: res.data[0]
       })
+      dispatch(loadCategories())
+      dispatch(loadProjects(id))
   })
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }

@@ -14,6 +14,10 @@ export const EMPLOYER_LOADING = "EMPLOYER_LOADING"
 export const EMPLOYER_LOADED = "EMPLOYER_LOADED"
 export const EM_NOT_FOUNDED = "EM_NOT_FOUNDED"
 
+//project types
+export const CATEGORIES_LOADED = "CATEGORIES_LOADED"
+export const PROJECTS_LOADED = "PROJECTS_LOADED"
+
 // errors types
 export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'

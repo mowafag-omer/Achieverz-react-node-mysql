@@ -1,15 +1,31 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-export const EmProfileWidget = () => {
+export const EmProfileWidget = (props) => {
   return (
     <Card bg="light" className="shadow-sm w-25">
-      <Card.Header variant="Dark" className="h-25">Welcome back employer1</Card.Header>
-      <Card.Body>
-        <Card.Title> Card Title </Card.Title>
+      <Card.Header className="bg-secondary text-light h-25">
+        Welcome back, <br/> <h4 className='mt-1'>{props.widgetInfo.name}</h4>
+      </Card.Header>
+      <Card.Body>   
+        <Card.Title>
+          
+        </Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the bulk
-          of the card's content.
+          <ul className='list-group list-group-flush w-100'>
+            <li className='list-group-item d-flex justify-content-between align-items-center'>
+              projets posté
+              <span class="badge bg-secondary text-white rounded-pill">{props.widgetInfo.allproject}</span>
+            </li>
+            <li className='list-group-item d-flex justify-content-between align-items-center'>
+              projets en attendant
+              <span class="badge bg-secondary text-white rounded-pill">{props.widgetInfo.pendding}</span>
+            </li>
+            <li className='list-group-item d-flex justify-content-between align-items-center'>
+              projets confirmé
+              <span class="badge bg-secondary text-white rounded-pill">{props.widgetInfo.confirmed}</span>
+            </li>
+          </ul>
         </Card.Text>
       </Card.Body>
     </Card>

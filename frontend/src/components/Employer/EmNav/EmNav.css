@@ -1,0 +1,36 @@
+.dropdown {
+  padding: 0 !important;
+}
+
+.dropdown .dropdown-toggle {
+  padding: 0 !important;
+}
+
+.dropdown .dropdown-toggle .avatar {
+  vertical-align: middle;
+  width: 35px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+}
+
+.dropdown .dropdown-toggle .nav-link {
+  padding: 0 !important;
+}
+
+.dropdown .dropdown-toggle:after {
+  display: none !important;
+}
+
+.dropdown .dropdown-menu {
+  top: 110% !important;
+  left: -80% !important;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  padding: .25rem .80rem !important;
+}
+
+.nav-active {
+  border-bottom: 2px solid #ffc107;
+}
+/*# sourceMappingURL=EmNav.css.map */

@@ -1,26 +1,30 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Modal, Button } from 'react-bootstrap' 
+import ProjectDetails from './ProjectDetails'
 import './postProject.css'
 
 const PostProject = ({classes}) => {
   const [show, setShow] = useState(false)
+  const projects = useSelector(state => state.projects)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   // const addSkill = (push, skill) => skill && push('') 
 
   const initialValues = {
-    project: '', description: '', sector: '', skills: [''], payBy: '', min: '', max: '',
+    project: '', description: '', sector: 0, skills: [''], payBy: '', min: 0, max: 0
   }
 
   const validationSchema = Yup.object({
     project: Yup.string().required('Required'),
     description: Yup.string().required('Required'),
-    sector: Yup.string().required('Required'),
+    sector: Yup.number().required('Required'),
     payBy: Yup.string().required('Required'),
-    min: Yup.string().required('Field is required')            
+    min: Yup.number().required('Required').positive(),            
+    max: Yup.number().required('Required').positive()            
   })
 
   const onSubmit = (values) => {
@@ -37,10 +41,11 @@ const PostProject = ({classes}) => {
       {({values, touched, errors }) => { return (
         <Form>
           <div className="modal-body">
+
             <div className='form-group shadow-sm p-2 border rounded'>
               <label htmlFor="project" className="form-label">Nom de projet</label>
               <Field type='text' id="project" name='project' placeholder="Choisissez un nom pour votre projet" 
-                className={touched.email && errors.email ? "border-danger form-control" : "form-control"} 
+                className={`form-control ${touched.project && errors.project && 'border-danger'}`}
               />
               <ErrorMessage name='project'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
@@ -48,17 +53,20 @@ const PostProject = ({classes}) => {
             <div className='form-group shadow-sm p-2 border rounded'>
               <label htmlFor="Description" className="form-label">Description</label>
               <Field as='textarea' id="Description" name='description' placeholder="Choisissez un nom pour votre projet" 
-                className={touched.description && errors.description ? "border-danger form-control" : "form-control"} 
+                className={`form-control ${touched.description && errors.description && 'border-danger'}`} 
               />
               <ErrorMessage name='description'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
 
             <div className='form-group shadow-sm p-2 border rounded'>
               <label htmlFor="Sector" className="form-label">Secteur</label>
-              <Field as='select' id="Sector" name='sector' className="form-control w-50">
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
+              <Field as='select' id="Sector" name='sector' 
+                className={`form-control w-50 ${touched.sector && errors.sector && 'border-danger'}`}
+              >
+                <option value="">Choisissez un secteur</option>
+                {projects.categories.map(category => 
+                  <option value={category.id}>{category.category_name}</option>
+                )}
               </Field>
               <ErrorMessage name='sector'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
@@ -68,7 +76,6 @@ const PostProject = ({classes}) => {
               <FieldArray name='skills'>{({push, remove, form}) => {
                 const { values } = form
                 const { skills } = values
-                console.log(!!values.skills)
                 return (<>
                   {skills.map((skill, index) => (
                     <div key={index} className="d-flex w-50 mb-2">
@@ -111,7 +118,7 @@ const PostProject = ({classes}) => {
               <div className="input-group w-50">
                 <span class="input-group-text">Budget minimum</span>
                 <Field type='number' name='min' placeholder="" 
-                  className={touched.min && errors.min ? "border-danger form-control" : "form-control"} 
+                  className={`form-control ${touched.min && errors.min && 'border-danger'}`}  
                 />
                 <span class="input-group-text">$</span>
               </div>
@@ -119,28 +126,15 @@ const PostProject = ({classes}) => {
               <div className="input-group w-50">
                 <span class="input-group-text">Budget maximum</span>
                 <Field type='number' name='max' placeholder="" 
-                  className={touched.max && errors.max ? "border-danger form-control" : "form-control"} 
+                  className={`form-control ${touched.max && errors.max && 'border-danger'}`} 
                 />
                 <span class="input-group-text">$</span>
               </div>
               <ErrorMessage name='max'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
 
-            {values.project && values.description && values.sector && values.min && values.max && (<>
-              <hr/>
-              <h5 className="pb-2">Sont-ils corrects ces détails ?</h5>
-              <div className='projectSum p-2 border rounded shadow-sm p-2 border rounder'>
-                <ul>
-                  <li>Nom de projet : {values.project}</li>
-                  <li>Description : {values.description}</li>
-                  <li>Secteur : {values.sector}</li>
-                  {values.skills[0] && 
-                    <li className="skills">Compétences requises : <ul>{values.skills.map(skill => skill && <li>{skill}</li>)}</ul></li>}
-                  <li>budget : {values.min} - {values.max} {values.payBy === 'hour' && 'par heur'}</li>
-                </ul>
-              </div>
-            </>)}
-    
+            <ProjectDetails values={values} categories={projects.categories} />
+
           </div>
           <div className="modal-footer">
             <Button variant="secondary" onClick={handleClose}>Fermer</Button>

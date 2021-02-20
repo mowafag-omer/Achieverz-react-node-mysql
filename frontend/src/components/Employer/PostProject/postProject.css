@@ -20,6 +20,10 @@
   font-weight: bold;
 }
 
+.modal-dialog .modal-content .modal-body textarea {
+  height: 19vh;
+}
+
 .modal-dialog .modal-content .projectSum ul {
   padding: 0;
   list-style: none;
@@ -28,6 +32,7 @@
 .modal-dialog .modal-content .projectSum ul li {
   margin: .7rem 0;
   font-weight: 500;
+  width: 95%;
 }
 
 .modal-dialog .modal-content .projectSum ul .skills ul {

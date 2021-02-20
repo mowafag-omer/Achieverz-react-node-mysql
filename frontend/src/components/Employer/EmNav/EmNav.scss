@@ -1,0 +1,29 @@
+.dropdown {
+  padding: 0 !important;
+  .dropdown-toggle{
+    padding: 0 !important;
+    .avatar {
+      vertical-align: middle;
+      width: 35px;
+      border-radius: 50%;
+      border: 2px solid gainsboro;
+    }
+    .nav-link{
+      padding: 0 !important;
+    }
+    &:after{
+     display: none !important;
+   }
+  }  
+  .dropdown-menu{
+    top: 110% !important;
+    left: -80% !important;
+    .dropdown-item{
+      padding: .25rem .80rem !important;
+    }
+  }  
+}
+
+.nav-active{
+  border-bottom: 2px solid #ffc107;
+}

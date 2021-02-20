@@ -2,23 +2,19 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import { useLocation } from 'react-router-dom'
-import PostProject from '../PostProject/PostProject'
+// import { useLocation } from 'react-router-dom'
 import { signOut } from '../../../store/actions/authActions'
 import avatar from '../../../photo/avatar.png'
-import './EmNav.css'
+import './FrNav.css'
 
-const EmNav = () => {
+const FrNav = () => {
   const dispatch = useDispatch()
-  const location = useLocation()
+  // const location = useLocation()
 
   return (
     <>
       <Navbar className='justify-content-between bg-dark navbar-expand'  variant="dark">
         <Navbar.Brand href="/">Achivierz</Navbar.Brand>
-        <Nav>
-          <PostProject />
-        </Nav>
         <Nav>
           <NavDropdown title={
             <div className="">
@@ -34,24 +30,8 @@ const EmNav = () => {
           </NavDropdown>
         </Nav>
       </Navbar>
-      <Navbar className='py-0' bg="light" variant="light">
-        <Nav className='py-0'>
-          <Link
-            to="/EmployerDashboard" 
-            className={`nav-link ${location.pathname === '/EmployerDashboard' && 'nav-active'}`} 
-          >
-            Dashboard
-          </Link> 
-          <Link 
-            to="/EmProjects" 
-            className={`nav-link ${location.pathname === '/EmProjects' && 'nav-active'}`}
-          >
-            Mes projects
-          </Link> 
-        </Nav>
-      </Navbar>
     </>
   )
 }
 
-export default EmNav
+export default FrNav
