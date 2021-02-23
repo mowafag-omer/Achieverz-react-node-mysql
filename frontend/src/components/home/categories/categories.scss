@@ -1,7 +1,28 @@
+@import '../../../assets/style/variables.scss';
+
 .categories{
-  height: 60vh;
-  div{
-    width: 25%;
-    height: 40%;
+  color: $primary !important;
+  h4{
+    // position: relative;
+    width: fit-content;
+    // z-index : 1;
+    border-color: $amber !important;
+    border-width: 2px !important;
+    
+    // &:before {
+    //   content : "";
+    //   position: absolute;
+    //   left    : 0;
+    //   bottom  : 0;
+    //   height  : 1px;
+    //   width   : 50%;
+    //   border-bottom: 3px solid $amber;
+    // } 
+  }
+  .categories-content{
+    min-height: 60vh;
+    div{
+      min-height: 150px;
+    }
   }
 }

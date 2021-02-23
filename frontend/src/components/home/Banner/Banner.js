@@ -9,13 +9,17 @@ const Banner = () => {
     <Jumbotron className="mb-0" fluid>
       <Container>
         <h1>Lorem ipsum</h1>
-        <p className="w-50">
-          Êtes-vous un employeur à la recherche d'un.e développeur.se freelance ou vous êtes un.e développeur.se ouvert au travail ?
-        </p>
-        <Form className="w-75" inline>
-          <FormControl type="text" placeholder="quelle compétence recherchez-vous ?" className="w-75" />
-          <Button type="submit" variant="success">Chercher</Button>
-        </Form>
+        <div className="row">
+          <p className="col-md-6">
+            Êtes-vous un employeur à la recherche d'un.e développeur.se freelance ou vous êtes un.e développeur.se ouvert au travail ?
+          </p>
+        </div>
+        <div className="row">
+          <Form className="col-md-8 col-11 b-search" inline>
+            <FormControl type="text" placeholder="quelle compétence recherchez-vous ?" className="" />
+            <Button className="W-50" type="submit">Chercher</Button>
+          </Form>
+        </div>
       </Container>
     </Jumbotron>  
   )

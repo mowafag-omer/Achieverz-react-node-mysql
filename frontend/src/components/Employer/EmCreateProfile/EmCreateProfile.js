@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-const CreateEmployerProfile = () => {
+const EmCreateProfile = () => {
   const initialValues = {
     fname: '',
     lname: '',
@@ -104,4 +104,4 @@ const CreateEmployerProfile = () => {
   )
 }
 
-export default CreateEmployerProfile
+export default EmCreateProfile

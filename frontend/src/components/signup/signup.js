@@ -5,6 +5,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
+import fr from '../../../src/assets/icons/fr.png'
+import em from '../../../src/assets/icons/em.png'
+import './signup.css'
 
 const Signup = () => {
   const dispatch = useDispatch()
@@ -36,8 +39,8 @@ const Signup = () => {
   }
 
   return (
-    <div className="bg-light d-flex flex-column justify-content-center py-4" style={{minHeight: "80.7vh"}}>
-      <div className="w-50 mx-auto p-3 rounded shadow">
+    <div className="bg-light py-4" style={{minHeight: "80.7vh"}}>
+      <div className="col-10 col-md-8 col-lg-6 mx-auto p-3 rounded shadow">
         <h4 className="text-center">S'inscrire</h4>
         <hr className="w-100"></hr>
 
@@ -46,17 +49,25 @@ const Signup = () => {
         {({touched, errors }) => { return (
           <Form className="w-75 mr-auto ml-auto">
 
-            <div className="mb-3 d-flex justify-content-center">
-              <div className="form-check form-check-inline">
-                <Field type="radio" name="type" value="employer" className="form-check-input" />
-                <label className="form-check-label" htmlFor="Type1">Employer</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <Field type="radio"name="type" value="freelancer" className="form-check-input" />
-                <label className="form-check-label" htmlFor="Type2">Freelancer</label>
-              </div>
-              <ErrorMessage name='type'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
-            </div>  
+            <div className="mb-3">
+              <div className="type d-flex justify-content-center">
+                <div className="form-check form-check-inline">
+                  <Field type="radio" id="Type1" name="type" value="employer" className="form-check-input" />
+                  <label className={`form-check-label ${touched.type && errors.type && 'border-danger'}`} htmlFor="Type1"> 
+                    <img className="mt-1"src={em} alt=""/>
+                    <span>employeur</span>
+                  </label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <Field type="radio" id="Type2" name="type" value="freelancer" className="form-check-input" />
+                  <label className={`form-check-label ${touched.type && errors.type && 'border-danger'}`} htmlFor="Type2">
+                    <img className="mt-1"src={fr} alt=""/>
+                    <span>Freelancer</span>
+                  </label>
+                </div>
+              </div>  
+              <ErrorMessage name='type'>{error => <div className="text-danger text-center">{error}</div>}</ErrorMessage>
+            </div>
 
             <div className='mb-3'>
               <Field type='email' id='email' name='email' placeholder="Adresse Email" 

@@ -5,7 +5,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import PostProject from '../PostProject/PostProject'
 import { signOut } from '../../../store/actions/authActions'
-import avatar from '../../../photo/avatar.png'
+import avatar from '../../../assets/photo/avatar.png'
 import './EmNav.css'
 
 const EmNav = () => {
@@ -22,10 +22,7 @@ const EmNav = () => {
         <Nav>
           <NavDropdown title={
             <div className="">
-              <img className="mr-5 avatar" 
-                  src={avatar} 
-                  alt=""
-              />
+              <img className="mr-5 avatar"src={avatar} alt="Img de profile"/>
             </div>
           } id="collasible-nav-dropdown">
             <NavDropdown.Item href="">Profile</NavDropdown.Item>

@@ -1,14 +1,27 @@
+@import '../../../assets/style/variables.scss';
 
 .jumbotron {
-  .form-control{
-    border-radius: 5px 0 0 5px;
-    height: 8vh;
+  background-color: $secondary !important;
+  color: $primary;
+  .b-search{
+    flex-wrap: nowrap !important;
+    .form-control{
+      border-radius: 5px 0 0 5px;
+      height: 3rem;
+      width: 80% !important;
+    }
+    .btn{
+      border-radius: 0 5px 5px 0;
+      height: 3rem;
+      min-width: fit-content;
+      width: 20%;
+    }
+    .btn:hover{
+      background-color: $amber !important;
+      color: $primary !important;
+      border-color: $primary !important;
+    }
   }
-  .btn{
-    border-radius: 0 5px 5px 0;
-    height: 8vh;
-    min-width: fit-content;
-    width: 18%;
-  }
+  
 }
   

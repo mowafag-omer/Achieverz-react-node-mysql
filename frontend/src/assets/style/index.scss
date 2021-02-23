@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +8,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  footer{
+    background-color: $primary;
+    color: $secondary;
+  }
 }
 
 code {
@@ -32,4 +38,28 @@ code {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+.btn, .btn-primary { 
+  background-color: $primary !important;
+  border-width: 1.4px;
+  border-color: $secondary !important;
+  color: #f1f1f1 !important;
+}
+.btn:focus{
+  box-shadow: none !important;
+}
+
+.btn:hover{
+  background-color: rgba(61, 77, 124, 0.8) !important;
+  border-color: $amber !important;
+}
+
+.form-control{
+  border-color: $primary !important;
+  outline-color: $amber !important;
+  &:focus, &:active{
+    border-color: $primary !important;
+    box-shadow: 0 0 0 0.12rem rgba(61, 77, 124, 0.4) !important;
+  }
 }

@@ -1,14 +1,31 @@
-.jumbotron .form-control {
-  border-radius: 5px 0 0 5px;
-  height: 8vh;
+.jumbotron {
+  background-color: #dadada !important;
+  color: #2b3247;
 }
 
-.jumbotron .btn {
+.jumbotron .b-search {
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
+}
+
+.jumbotron .b-search .form-control {
+  border-radius: 5px 0 0 5px;
+  height: 3rem;
+  width: 80% !important;
+}
+
+.jumbotron .b-search .btn {
   border-radius: 0 5px 5px 0;
-  height: 8vh;
+  height: 3rem;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  width: 18%;
+  width: 20%;
+}
+
+.jumbotron .b-search .btn:hover {
+  background-color: #ffc107 !important;
+  color: #2b3247 !important;
+  border-color: #2b3247 !important;
 }
 /*# sourceMappingURL=Banner.css.map */

@@ -1,9 +1,20 @@
 .categories {
-  height: 60vh;
+  color: #2b3247 !important;
 }
 
-.categories div {
-  width: 25%;
-  height: 40%;
+.categories h4 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-color: #ffc107 !important;
+  border-width: 2px !important;
+}
+
+.categories .categories-content {
+  min-height: 60vh;
+}
+
+.categories .categories-content div {
+  min-height: 150px;
 }
 /*# sourceMappingURL=categories.css.map */

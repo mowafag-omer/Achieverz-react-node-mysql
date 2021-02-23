@@ -7,12 +7,14 @@ export const EmployerDashboard = (props) => {
   const employer = useSelector(state => state.employer)
   const projects = useSelector(state => state.projects.projects)
   
+  console.log(employer)
+  
   const recentPro = projects.sort((a, b) => {
     const dateA = new Date(a.posting_date), dateB = new Date(b.posting_date)
     return dateB - dateA
   }).filter(p => p.project_status === 'bidding').pop() 
 
-  const widgetInfo = {
+  const Info = {
     name: `${employer.employer.first_name} ${employer.employer.last_name}`,
     allproject: projects.length,
     pendding: projects.filter(p => p.project_status !== 'confirmed').length,
@@ -20,7 +22,7 @@ export const EmployerDashboard = (props) => {
   }
   
   useEffect(() => {
-    employer.hasNoProfile && props.history.push("/createEmProfile")
+    employer.hasNoProfile && props.history.push("/emCreateProfile")
   })
 
   return (
@@ -29,7 +31,7 @@ export const EmployerDashboard = (props) => {
         <h4 className="mb-4">Projets récents</h4>
         <ProjectPreview project={recentPro} />
       </div>
-      <ProfileWidget widgetInfo={widgetInfo} />
+      <ProfileWidget widgetInfo={Info} />
     </div>
   )
 }

@@ -1,4 +1,36 @@
-.navbar-collapse {
+.navbar {
+  background-color: #2b3247 !important;
+}
+
+.navbar .navbar-brand {
+  color: #ffc107 !important;
+}
+
+.navbar .nav-link .icon {
+  color: #ffc107;
+}
+
+.navbar .nav-link span {
+  color: #f1f1f1;
+}
+
+.navbar .nav-link span:hover {
+  color: #ffc107;
+}
+
+.navbar .navbar-nav .btn {
+  border-color: #dadada;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.navbar .navbar-nav .btn:hover {
+  background-color: #dadada !important;
+  color: #2b3247 !important;
+  border-color: #ffc107;
+}
+
+.navbar .navbar-collapse {
   -webkit-box-flex: 0 !important;
       -ms-flex-positive: 0 !important;
           flex-grow: 0 !important;

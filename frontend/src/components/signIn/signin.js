@@ -30,8 +30,8 @@ const Signin = (props) => {
   }
 
   return (
-    <div className="bg-light d-flex flex-column justify-content-center py-4" style={{minHeight: "80.7vh"}}>
-      <div className="w-50 mx-auto p-3 rounded shadow">
+    <div className="bg-light py-4" style={{minHeight: "80.7vh"}}>
+      <div className="col-10 col-md-8 col-lg-6 mx-auto p-3 rounded shadow">
         <h4 className="text-center">Se connecter</h4>
         <hr className="w-100 mb-5"></hr>
 

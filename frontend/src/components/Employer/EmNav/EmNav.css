@@ -11,10 +11,14 @@
   width: 35px;
   border-radius: 50%;
   border: 2px solid gainsboro;
+  -webkit-transition: 1S;
+  transition: 1S;
 }
 
 .dropdown .dropdown-toggle .nav-link {
   padding: 0 !important;
+  -webkit-transition: 1S;
+  transition: 1S;
 }
 
 .dropdown .dropdown-toggle:after {

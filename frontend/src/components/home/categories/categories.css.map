@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAA;EACT,MAAM,EAAE,IAAI;CAKb;;AAND,AAEE,WAFS,CAET,GAAG,CAAA;EACD,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;CACZ",
+    "mappings": "AAEA,AAAA,WAAW,CAAA;EACT,KAAK,ECHG,OAAO,CDGC,UAAU;CAwB3B;;AAzBD,AAEE,WAFS,CAET,EAAE,CAAA;EAEA,KAAK,EAAE,WAAW;EAElB,YAAY,ECNR,OAAO,CDMU,UAAU;EAC/B,YAAY,EAAE,cAAc;CAW7B;;AAlBH,AAmBE,WAnBS,CAmBT,mBAAmB,CAAA;EACjB,UAAU,EAAE,IAAI;CAIjB;;AAxBH,AAqBI,WArBO,CAmBT,mBAAmB,CAEjB,GAAG,CAAA;EACD,UAAU,EAAE,KAAK;CAClB",
     "sources": [
-        "categories.scss"
+        "categories.scss",
+        "../../../assets/style/variables.scss"
     ],
     "names": [],
     "file": "categories.css"
