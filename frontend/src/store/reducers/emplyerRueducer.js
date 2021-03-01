@@ -1,9 +1,10 @@
-import { EM_CREATE_SUCCESS, EMPLOYER_LOADED, EM_NOT_FOUNDED } from '../types'
+import { EM_CREATE_SUCCESS, EMPLOYER_LOADED, EM_NOT_FOUNDED, CLEAR_EMPLOYER } from '../types'
 
 const initialState = {
   hasNoProfile: false,
   isLoading: false,
-  employer: null
+  employer: null,
+  loaded: false
 }
 
 export default function authReducer(state = initialState, action) {
@@ -12,7 +13,8 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         hasNoProfile: false,
-        employer: action.payload
+        employer: action.payload,
+        loaded: true
       }  
     case EM_CREATE_SUCCESS:
       return {
@@ -22,6 +24,13 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         hasNoProfile: true
+      }
+    case CLEAR_EMPLOYER:
+      return {
+        hasNoProfile: false,
+        isLoading: false,
+        employer: null,
+        loaded: false
       }
     default:
       return state;

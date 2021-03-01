@@ -49,6 +49,19 @@ router.get('/projects/:id', (req, res) => {
   })
 })
 
+.get('/skills', checkAuth, (req, res) => {
+  sql = 'SELECT * FROM skills WHERE status = "confirmed"'
+
+  db.query(sql, (err, results) => {
+    if (err) throw err
+    if(results.length) {
+      res.status(200).json(results)
+    } else {
+      res.status(204).json()
+    }
+  })
+})
+
 .post('/add-application', (req, res) => {
   sql = `INSERT INTO applications (project_id, user_id, status) VALUES ?`
   

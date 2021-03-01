@@ -8,9 +8,9 @@ const Banner = () => {
   return (
     <Jumbotron className="mb-0" fluid>
       <Container>
-        <h1>Lorem ipsum</h1>
+        <h1>Trouver & Recruter</h1>
         <div className="row">
-          <p className="col-md-6">
+          <p className="col-11 col-md-8 col-lg-6">
             Êtes-vous un employeur à la recherche d'un.e développeur.se freelance ou vous êtes un.e développeur.se ouvert au travail ?
           </p>
         </div>

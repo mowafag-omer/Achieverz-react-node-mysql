@@ -9,7 +9,8 @@ router
   .post("/sign-up", (req, res) => {
     const { email, password, type } = req.body
     const pass = bcrypt.hashSync(password, 10)
-    const insertsql = `INSERT INTO users (email, password, type) VALUES ('${email}', '${pass}', '${type}')`
+    const values = {email: email, pass: pass, type: type}
+    const insertsql = `INSERT INTO users (email, password, type) VALUES ?`
     const selectsql = `SELECT * FROM users WHERE email = '${email}'`
 
     db.query(selectsql, (err, results) => {
@@ -17,7 +18,7 @@ router
       if (results.length) {
         res.status(409).json("This email already registered !")
       } else {
-        db.query(insertsql, (err) => {
+        db.query(insertsql, [[Object.values(values)]], (err) => {
           if (err) throw err
           res.status(201).json("successfully registered")
         })

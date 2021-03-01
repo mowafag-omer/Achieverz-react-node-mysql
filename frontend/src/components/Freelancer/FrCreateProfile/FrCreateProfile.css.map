@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAA;EACb,UAAU,EAAE,MAAM;CACnB",
+    "sources": [
+        "FrCreateProfile.scss",
+        "../../../assets/style/variables.scss"
+    ],
+    "names": [],
+    "file": "FrCreateProfile.css"
+}

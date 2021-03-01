@@ -11,6 +11,8 @@ body {
   footer{
     background-color: $primary;
     color: $secondary;
+    border-top: 1px solid $amber !important;
+
   }
 }
 
@@ -45,21 +47,29 @@ code {
   border-width: 1.4px;
   border-color: $secondary !important;
   color: #f1f1f1 !important;
-}
-.btn:focus{
-  box-shadow: none !important;
-}
-
-.btn:hover{
-  background-color: rgba(61, 77, 124, 0.8) !important;
-  border-color: $amber !important;
+  transition: .4s !important;
+  &:focus{
+    box-shadow: none !important;
+  }
+  &:hover{
+    background-color: rgba(61, 77, 124, 0.8) !important;
+    border-color: $amber !important;
+  }
+  &:active{
+    background-color: $amber !important;
+    color: $primary !important;
+    border-color: $primary !important;
+  }
 }
 
 .form-control{
   border-color: $primary !important;
   outline-color: $amber !important;
-  &:focus, &:active{
-    border-color: $primary !important;
-    box-shadow: 0 0 0 0.12rem rgba(61, 77, 124, 0.4) !important;
+  &:focus{
+    border-color: rgb(196, 147, 0) !important;
+    box-shadow: 0 0 0 0.12rem rgba(255, 193, 5, .5)  !important;
+  }
+  &::placeholder{
+    color: $primary !important;
   }
 }

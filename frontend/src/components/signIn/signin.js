@@ -13,7 +13,7 @@ const Signin = (props) => {
 
   useEffect(() => {
     if(user.isAuthenticated && user.type === 'employer' ){
-      props.history.push("/EmployerDashboard")
+      props.history.push("/loading")
     } 
   }, [user, dispatch, props.history])
 

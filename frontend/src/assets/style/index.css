@@ -9,6 +9,7 @@ body {
 body footer {
   background-color: #2b3247;
   color: #dadada;
+  border-top: 1px solid #ffc107 !important;
 }
 
 code {
@@ -41,16 +42,24 @@ code {
   border-width: 1.4px;
   border-color: #dadada !important;
   color: #f1f1f1 !important;
+  -webkit-transition: .4s !important;
+  transition: .4s !important;
 }
 
-.btn:focus {
+.btn:focus, .btn-primary:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-.btn:hover {
+.btn:hover, .btn-primary:hover {
   background-color: rgba(61, 77, 124, 0.8) !important;
   border-color: #ffc107 !important;
+}
+
+.btn:active, .btn-primary:active {
+  background-color: #ffc107 !important;
+  color: #2b3247 !important;
+  border-color: #2b3247 !important;
 }
 
 .form-control {
@@ -58,9 +67,25 @@ code {
   outline-color: #ffc107 !important;
 }
 
-.form-control:focus, .form-control:active {
-  border-color: #2b3247 !important;
-  -webkit-box-shadow: 0 0 0 0.12rem rgba(61, 77, 124, 0.4) !important;
-          box-shadow: 0 0 0 0.12rem rgba(61, 77, 124, 0.4) !important;
+.form-control:focus {
+  border-color: #c49300 !important;
+  -webkit-box-shadow: 0 0 0 0.12rem rgba(255, 193, 5, 0.5) !important;
+          box-shadow: 0 0 0 0.12rem rgba(255, 193, 5, 0.5) !important;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #2b3247 !important;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #2b3247 !important;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #2b3247 !important;
+}
+
+.form-control::placeholder {
+  color: #2b3247 !important;
 }
 /*# sourceMappingURL=index.css.map */

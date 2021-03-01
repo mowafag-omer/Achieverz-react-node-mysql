@@ -1,0 +1,46 @@
+@import '../../../../assets/style/variables.scss';
+
+.form-progress{
+  .form-steps{
+    position: absolute;
+    top: 50%;
+    width: 95%;
+    height: .2rem;
+    background-color: $secondary;
+    border-radius: 50px;
+    z-index: -2;
+    .bar-progress{
+      background-color: $primary;
+      width: 0%;
+      height: inherit;
+      z-index: -1;
+      transition: .5S;
+    }
+  }
+  .btn{
+    width: 3rem !important;
+    height: 3rem !important;
+    background-color: $secondary !important;
+    color: $primary !important;
+    border-color: $primary !important;
+    &:hover{
+      background-color: $amber !important;
+      color: $primary !important;
+      border-color: $primary !important;
+    }
+  }
+  .active{
+    background-color: $amber !important;
+    color: $primary !important;
+  }
+  .done{
+    background-color: $primary !important;
+    color: $secondary !important;
+  }
+}
+
+@media screen and (max-width: 1020px){
+  .form-progress{
+    width: 75% !important;
+  }
+}

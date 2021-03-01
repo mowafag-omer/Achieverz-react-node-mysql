@@ -7,9 +7,12 @@ import {
   SIGNUP_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  SIGN_OUT 
+  SIGN_OUT,
+  CLEAR_PROJECTS,
+  CLEAR_EMPLOYER 
 } from '../types'
 import { loadEmployer } from './employerActions'
+import { loadProjects, loadCategories, loadskills } from '../../store/actions/projectAction'
 import { returnErrors } from './errorActions'
 
 const config = {headers: {'Content-Type': 'application/json'}}
@@ -23,7 +26,12 @@ export const loadUser = (token) => (dispatch) => {
         type: USER_LOADED,
         payload: {userId, email, type} 
       })
-      type === 'employer' && dispatch(loadEmployer(userId))   
+      if(type === 'employer'){
+        dispatch(loadEmployer(userId))
+        dispatch(loadCategories())
+        dispatch(loadskills())
+        dispatch(loadProjects(userId))
+      }
     })
   } else {
     dispatch({ type: AUTH_ERROR })
@@ -60,8 +68,8 @@ export const signUp = (body) => (dispatch) => {
   })
 }
 
-export const signOut = () =>{
-  return {
-    type: SIGN_OUT
-  }
+export const signOut = () => (dispatch) =>{
+  dispatch({ type: SIGN_OUT })
+  dispatch({ type: CLEAR_PROJECTS })
+  dispatch({ type: CLEAR_EMPLOYER })
 }

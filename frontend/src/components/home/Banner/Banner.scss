@@ -11,15 +11,17 @@
       width: 80% !important;
     }
     .btn{
+      background-color: $amber !important;
+      color: $primary !important;
+      border-color: $primary !important;
       border-radius: 0 5px 5px 0;
       height: 3rem;
       min-width: fit-content;
       width: 20%;
     }
     .btn:hover{
-      background-color: $amber !important;
-      color: $primary !important;
-      border-color: $primary !important;
+      background-color: $primary !important;
+      color: $secondary !important;
     }
   }
   

@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { BoxArrowInRight, PencilSquare } from 'react-bootstrap-icons'
+import { BoxArrowInRight, PencilSquare} from 'react-bootstrap-icons' 
 import './nav.css'
 
 const HomeNav = () => {
@@ -10,8 +10,8 @@ const HomeNav = () => {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" variant="dark">
-        <Link to='/'><Navbar.Brand>Achivierz</Navbar.Brand></Link>
+      <Navbar collapseOnSelect className="main-nav" expand="lg" variant="dark">
+        <Link to='/'><Navbar.Brand><b>ACHIEVERZ</b></Navbar.Brand></Link>
         <Nav className="m-auto nav-btn">
           {location.pathname === '/' && (<>
             <Button className="m-1">Poster un job</Button>
@@ -21,11 +21,11 @@ const HomeNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="flex-shrink-lg-0">
-            <Link className="nav-link" to="/login">
+            <Link className={`nav-link ${location.pathname === '/login' && 'active'}`} to="/login">
               <BoxArrowInRight size={21} className="mr-2 icon" /> 
               <span>Se conecter</span>
             </Link>
-            <Link className="nav-link" to="/Signup">
+            <Link className={`nav-link ${location.pathname === '/Signup' && 'active'}`} to="/Signup">
               <PencilSquare size={21} className="mr-2 icon" /> 
               <span>S'inscrire</span>
             </Link>

@@ -24,6 +24,35 @@
   height: 19vh;
 }
 
+.modal-dialog .modal-content .modal-body .skills-input:focus + .skills, .modal-dialog .modal-content .modal-body .skills-input:invalid + .skills {
+  display: block;
+}
+
+.modal-dialog .modal-content .modal-body .skills {
+  display: none;
+  top: 38px !important;
+  width: 75% !important;
+  height: 150px !important;
+  overflow-y: scroll !important;
+  cursor: pointer;
+  -webkit-transition: 2s !important;
+  transition: 2s !important;
+  z-index: 2;
+}
+
+.modal-dialog .modal-content .modal-body .skills:hover {
+  display: none;
+}
+
+.modal-dialog .modal-content .modal-body .skills::-webkit-scrollbar-track {
+  background: #e9ecef;
+}
+
+.modal-dialog .modal-content .modal-body .skills .skill {
+  background-color: #e9ecef !important;
+  color: #2b3247 !important;
+}
+
 .modal-dialog .modal-content .projectSum ul {
   padding: 0;
   list-style: none;

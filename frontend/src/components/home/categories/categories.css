@@ -3,11 +3,21 @@
 }
 
 .categories h4 {
+  position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border-color: #ffc107 !important;
-  border-width: 2px !important;
+  z-index: 1;
+}
+
+.categories h4:before {
+  content: "";
+  position: absolute;
+  left: 15%;
+  bottom: 0;
+  height: 1px;
+  width: 70%;
+  border-bottom: 3px solid #ffc107;
 }
 
 .categories .categories-content {

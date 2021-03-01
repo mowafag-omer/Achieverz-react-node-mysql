@@ -4,7 +4,7 @@ import './categories.css'
 const Categories = () => {
   return (
     <div className="container categories">
-      <h4 className="text-center p-3 mx-auto border-bottom">Catégories</h4>
+      <h4 className="text-center py-3 mx-auto">Catégories</h4>
       <div className="categories-content row justify-content-center">
       {[
         'Web Development',

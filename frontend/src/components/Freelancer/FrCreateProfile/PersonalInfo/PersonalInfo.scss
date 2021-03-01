@@ -1,0 +1,10 @@
+@media screen and (max-width: 576px){
+  .personal-info{
+    .row-wrapper{
+      flex-direction: column !important;
+      .input-wrapper{
+        width: 100% !important;
+      }
+    }
+  }
+}

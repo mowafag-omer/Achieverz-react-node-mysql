@@ -1,0 +1,12 @@
+@media screen and (max-width: 576px) {
+  .personal-info .row-wrapper {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .personal-info .row-wrapper .input-wrapper {
+    width: 100% !important;
+  }
+}
+/*# sourceMappingURL=PersonalInfo.css.map */
