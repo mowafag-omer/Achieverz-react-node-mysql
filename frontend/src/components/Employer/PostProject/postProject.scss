@@ -6,9 +6,9 @@
   height: 90vh;
   .modal-content{
     width: 70vw !important;
-    height: 93VH !important;
+    // height: 93VH !important;
     .modal-body{
-      height: 70vh;
+      max-height: 70vh;
       padding-right: 5%;
       padding-left: 5%;
       overflow: auto;
@@ -18,21 +18,18 @@
       textarea{
         height: 19vh;
       }
-      .skills-input:focus + .skills, .skills-input:invalid + .skills{
-        display: block;
-      }
-      .skills{
-        display: none;
+      // .skills-input:focus + .skills, .skills-input:invalid + .skills{
+      //   display: block;
+      // }
+      .skills-list{
+        // display: none;
         top: 38px !important;
         width: 75% !important;
-        height: 150px !important;
+        max-height: 150px !important;
         overflow-y: scroll !important;
         cursor: pointer;
         transition: 2s !important;
         z-index: 2;
-        &:hover{
-          display: none;
-        }
         &::-webkit-scrollbar-track {
           background: #e9ecef;
         }

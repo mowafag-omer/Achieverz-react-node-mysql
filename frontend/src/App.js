@@ -11,7 +11,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...mi
 
 function App() {
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-between" style={{minHeight:'100vh'}}>
       <Provider store={store}>
         <Routes />
       </Provider>  

@@ -1,21 +1,26 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Modal, Button } from 'react-bootstrap' 
+import { postProject } from '../../../store/actions/projectAction'
 import ProjectDetails from './ProjectDetails'
 import './postProject.css'
 
 const PostProject = ({classes}) => {
   const [show, setShow] = useState(false)
+  const userId = useSelector(state => state.auth.userId)
   const projects = useSelector(state => state.projects)
+  const dispatch = useDispatch()
+  
+  const skillsList = [...projects.skills]
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   // const addSkill = (push, skill) => skill && push('') 
 
   const initialValues = {
-    project: '', description: '', sector: 0, skills: [''], payBy: '', min: 0, max: 0
+    project: '', description: '', sector: 0, skills: [''], payBy: '', min: 0, max: 0, list: false
   }
 
   const validationSchema = Yup.object({
@@ -30,6 +35,8 @@ const PostProject = ({classes}) => {
   const onSubmit = (values) => {
     values.skills.pop()
     console.log(values)
+    console.log(userId);
+    dispatch(postProject(values, userId))
   }
 
   return (<>
@@ -81,24 +88,30 @@ const PostProject = ({classes}) => {
               <FieldArray name='skills'>{({push, remove, form}) => {
                 const { values, setFieldValue } = form
                 const { skills } = values
-                console.log(values)
                 return (<>
                   {skills.map((skill, index) => (
                     <div key={index} className="d-flex w-50 mb-2 position-relative">
-                      {skills.length - 1 === index ? (<> 
-                        <Field name={`skills[${index}]`} className="skills-input form-control w-75 mr-2" 
-                        placeholder="Ajouter une compétence requise" required/>
-                        <ul className="list-group position-absolute skills">
-                          {projects.skills.map(pskill => 
+                      {skills.length - 1 === index ? skills.length < 6 && (<> 
+                        <Field 
+                          name={`skills[${index}]`} 
+                          className="skills-input form-control w-75 mr-2" 
+                          onClick={() => setFieldValue('list', true, false ) }
+                          placeholder="Ajouter une compétence requise"
+                        />
+                        {values.list && <ul className="list-group position-absolute skills-list">
+                          {skillsList.filter(x => skills.indexOf(x) === -1).map(pskill =>
                             <li 
                               className='list-group-item skill'
-                              onClick={() => setFieldValue(`skills[${index}]`, pskill.skill, false )}
-                               key={pskill.id}
-                              >
+                              onClick={() => {
+                                setFieldValue(`skills[${index}]`, pskill.skill)
+                                setFieldValue('list', false)
+                              }} 
+                              key={pskill.id}
+                            >
                               {pskill.skill}
                             </li>
                           )}
-                        </ul>
+                        </ul>}
                         </>): 
                         <div className="py-1 px-2 mr-2 bg-light rounded">{skill}</div>
                       }
@@ -107,7 +120,7 @@ const PostProject = ({classes}) => {
                           className="badge align-self-center border p-2 bg-light" 
                         > &#x2012; </span>
                       }
-                      {skills.length - 1 === index && 
+                      {skills.length - 1 === index && skills.length < 6 &&
                         <span role='button' onClick={() => skill && push('')}
                           className="badge align-self-center border p-2 bg-light" 
                         > &#x271A; </span>
@@ -134,19 +147,19 @@ const PostProject = ({classes}) => {
             <div className="form-group shadow-sm p-2 border rounded">
               <label className="d-block form-label">Quel est votre budget estimé ?</label>
               <div className="input-group w-50">
-                <span class="input-group-text">Budget minimum</span>
+                <span className="input-group-text">Budget minimum</span>
                 <Field type='number' name='min' placeholder="" 
                   className={`form-control ${touched.min && errors.min && 'border-danger'}`}  
                 />
-                <span class="input-group-text">$</span>
+                <span className="input-group-text">$</span>
               </div>
               <ErrorMessage name='min'>{error => <div className="text-danger">{error}</div>}</ErrorMessage><br/>
               <div className="input-group w-50">
-                <span class="input-group-text">Budget maximum</span>
+                <span className="input-group-text">Budget maximum</span>
                 <Field type='number' name='max' placeholder="" 
                   className={`form-control ${touched.max && errors.max && 'border-danger'}`} 
                 />
-                <span class="input-group-text">$</span>
+                <span className="input-group-text">$</span>
               </div>
               <ErrorMessage name='max'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>

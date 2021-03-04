@@ -9,6 +9,24 @@ export const loadProjects = (id) => dispatch => {
   }))
 }
 
+export const postProject = (project, userId) => dispatch => {
+  axios.post(`http://localhost:3001/project/post-project`,{
+    title: project.project,
+    description: project.description,
+    category: project.sector,
+    skills: JSON.stringify(project.skills),
+    budget:	project.payBy,
+    min: project.min,
+    max: project.max,
+    status: 'bidding',
+    userId: userId
+  }, config)
+  .then((res) => {
+    console.log(res.data)
+    dispatch(loadProjects(userId))
+  })
+}
+
 export const loadCategories = () => dispatch => {
   axios.get('http://localhost:3001/project/categories', config)
   .then((res) => dispatch({ 

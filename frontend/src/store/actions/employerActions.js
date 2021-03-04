@@ -22,7 +22,6 @@ export const loadEmployer = (id) => dispatch => {
     }
   })
   .then((res) => {
-    console.log(res.data[0]);
     res.status === 204 && dispatch({ type: EM_NOT_FOUNDED })
     res.status === 200 && 
       dispatch({ 

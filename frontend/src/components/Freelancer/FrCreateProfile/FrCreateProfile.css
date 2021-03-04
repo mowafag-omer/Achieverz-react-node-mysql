@@ -1,4 +1,80 @@
 .create-profile {
   min-height: 76.2VH;
 }
+
+.create-profile .form-control {
+  font-weight: 500 !important;
+}
+
+.create-profile .form-control::-webkit-input-placeholder {
+  font-weight: 400 !important;
+}
+
+.create-profile .form-control:-ms-input-placeholder {
+  font-weight: 400 !important;
+}
+
+.create-profile .form-control::-ms-input-placeholder {
+  font-weight: 400 !important;
+}
+
+.create-profile .form-control::placeholder {
+  font-weight: 400 !important;
+}
+
+.create-profile h4 {
+  color: #2b3247;
+}
+
+.create-profile .skills-list {
+  top: 38px !important;
+  width: 75% !important;
+  max-height: 150px !important;
+  overflow-y: scroll !important;
+  cursor: pointer;
+  -webkit-transition: 2s !important;
+  transition: 2s !important;
+  z-index: 2;
+}
+
+.create-profile .skills-list::-webkit-scrollbar-track {
+  background: #e9ecef;
+}
+
+.create-profile .skills-list .skill {
+  background-color: #e9ecef !important;
+  color: #2b3247 !important;
+}
+
+.form-btn .btn {
+  background-color: #ffc107 !important;
+  color: #2b3247 !important;
+}
+
+.form-btn .btn:hover {
+  background-color: rgba(61, 77, 124, 0.8) !important;
+  color: #f0f0f0 !important;
+}
+
+.form-btn .btn-off {
+  background-color: #dadada !important;
+  color: #2b3247 !important;
+  border-color: #2b3247 !important;
+}
+
+.frPreview {
+  color: #2b3247 !important;
+}
+
+.frPreview svg {
+  color: gray !important;
+}
+
+.frPreview svg:hover {
+  color: #2b3247 !important;
+}
+
+.frPreview h6 {
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=FrCreateProfile.css.map */

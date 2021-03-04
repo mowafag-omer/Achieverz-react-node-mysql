@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Spinner } from 'react-bootstrap'
 
@@ -11,6 +11,11 @@ const Loading = (props) => {
     <div className="w-100 d-flex justify-content-center" style={{minHeight: '74vh'}}>
       {user && employer && projects ?  
         props.history.push("/EmployerDashboard"): 
+        <Spinner className="my-auto" animation="grow" />
+      } 
+
+      {user && employer && projects ?  
+        props.history.push("/"): 
         <Spinner className="my-auto" animation="grow" />
       } 
     </div>

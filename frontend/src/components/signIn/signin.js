@@ -12,7 +12,7 @@ const Signin = (props) => {
   const error = useSelector(state => state.error)
 
   useEffect(() => {
-    if(user.isAuthenticated && user.type === 'employer' ){
+    if(user.isAuthenticated){
       props.history.push("/loading")
     } 
   }, [user, dispatch, props.history])

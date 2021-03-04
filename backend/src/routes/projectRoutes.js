@@ -18,11 +18,12 @@ router.get('/projects/:id', (req, res) => {
 
 
 .post('/post-project', (req, res) => {
-  sql = `INSERT INTO projects (project_title, project_description, required_sector, required_skills, num_freelancer_required, budget, project_status, user_id) VALUES ?`
-  
+  // sql = `INSERT INTO projects (project_title, project_description, required_category, required_skills, budget, min_budget, max_budget, project_status, user_id) VALUES ?`
+
+  const sql = 'INSERT INTO projects (project_title, project_description, required_category, required_skills, budget, min_budget, max_budget, project_status, user_id) VALUES ?'
   db.query(sql, [[Object.values(req.body)]], (err, results) => {
     if (err) throw err 
-    res.status(201).json()
+    res.status(201).json('Votre projet est bien posté !')
   })  
 })
 

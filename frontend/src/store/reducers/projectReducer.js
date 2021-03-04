@@ -21,7 +21,6 @@ export default function projectReducer(state = initialState, action) {
         categories: action.payload
       }
     case SKILLS_LOADED:
-      console.log(action.payload);
       return {
         ...state,
         skills: action.payload

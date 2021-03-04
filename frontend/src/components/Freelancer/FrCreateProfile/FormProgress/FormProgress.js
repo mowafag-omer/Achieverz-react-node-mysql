@@ -1,6 +1,6 @@
 import React from 'react'
 import { Check2 } from 'react-bootstrap-icons'
-import './FromProgress.css'
+import './FormProgress.css'
 
 const FormProgress = ({step, setstep}) => {
 

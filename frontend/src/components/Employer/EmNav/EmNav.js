@@ -14,8 +14,8 @@ const EmNav = () => {
 
   return (
     <>
-      <Navbar className='justify-content-between bg-dark navbar-expand'  variant="dark">
-        <Navbar.Brand href="/">Achivierz</Navbar.Brand>
+      <Navbar className='Em-nav justify-content-between navbar-expand'  variant="dark">
+        <Navbar.Brand href="/">ACHIEVERZ</Navbar.Brand>
         <Nav>
           <PostProject />
         </Nav>
@@ -31,7 +31,7 @@ const EmNav = () => {
           </NavDropdown>
         </Nav>
       </Navbar>
-      <Navbar className='py-0' bg="light" variant="light">
+      <Navbar className='s-nav py-0' bg="light" variant="light">
         <Nav className='py-0'>
           <Link
             to="/EmployerDashboard" 

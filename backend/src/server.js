@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.use('/user', userRoutes)
-app.use('/fl', flRoutes)
+app.use('/fr', flRoutes)
 app.use('/em', emRoutes)
 app.use('/project', projectRoutes)
 

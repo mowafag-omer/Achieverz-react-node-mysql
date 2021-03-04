@@ -31,7 +31,7 @@ export const loadUser = (token) => (dispatch) => {
         dispatch(loadCategories())
         dispatch(loadskills())
         dispatch(loadProjects(userId))
-      }
+      } 
     })
   } else {
     dispatch({ type: AUTH_ERROR })

@@ -3,17 +3,17 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './PersonalInfo.css'
 
-const personalInfo = () => {
+const personalInfo = ({userPI, setuserPI, setstep}) => {
 
   const initialValues = {
-    fname: '',
-    lname: '',
-    email: '',
-    phone: '',
-    city: '',
-    country: '',
-    title: '',
-    bio: '',
+    fname: userPI.fname,
+    lname: userPI.lname,
+    email: userPI.email,
+    phone: userPI.phone,
+    city: userPI.city,
+    country: userPI.country,
+    title: userPI.title,
+    bio: userPI.bio,
   }
 
   const validationSchema = Yup.object({
@@ -28,12 +28,13 @@ const personalInfo = () => {
   })
 
   const onSubmit = (values) => {
-    console.log(values)
+    setuserPI(values)
+    setstep(1)
   }
 
   return (
     <div className="personal-info col-11 col-md-8 mx-auto p-3 my-4 rounded shadow">
-      <h4 className="text-center">Informations Personnelles</h4>
+      <h3 className="text-center">Informations Personnelles</h3>
       <hr className="w-100"></hr>
 
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -86,6 +87,7 @@ const personalInfo = () => {
                 className={`form-control ${touched.country && errors.country && 'border-danger'}`}
               >
                 <option value="">Choisissez un pay</option>
+                <option value="Sudan">Sudan</option>
               </Field>
               <ErrorMessage name='country'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
@@ -98,14 +100,17 @@ const personalInfo = () => {
             <ErrorMessage name='title'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>
 
-          <div className='form-group'>
+          <div className='form-group mb-3'>
             <Field as='textarea' name='bio' placeholder="Bio ! parlez-nous de vous" 
               className={`form-control ${touched.bio && errors.bio && 'border-danger'}`} 
             />
             <ErrorMessage name='bio'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>
-          
-          <button className="btn mt-3 ml-auto" type='submit'>suivant</button>
+
+          <hr className="w-100"></hr>
+          <div className="mt-2 d-flex">
+          < button className="btn ml-auto" type='submit'>Suivant</button>
+          </div>
 
         </Form>
         )}}  

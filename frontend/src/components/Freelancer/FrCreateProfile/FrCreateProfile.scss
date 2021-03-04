@@ -2,6 +2,60 @@
 
 .create-profile{
   min-height: 76.2VH;
+  .form-control{
+    font-weight: 500 !important;
+    &::placeholder{
+      font-weight: 400 !important;
+    }
+  }
+  h4{
+    color: $primary;
+  }
+  .skills-list{
+    // display: none;
+    top: 38px !important;
+    width: 75% !important;
+    max-height: 150px !important;
+    overflow-y: scroll !important;
+    cursor: pointer;
+    transition: 2s !important;
+    z-index: 2;
+    &::-webkit-scrollbar-track {
+      background: #e9ecef;
+    }
+    .skill{
+      background-color: #e9ecef !important;
+      color: $primary !important;
+    }
+  }
+}
+
+.form-btn{
+  .btn{
+    background-color: $amber !important;
+    color: $primary !important;
+    &:hover{
+      background-color: rgba(61, 77, 124, 0.8) !important;
+      color: rgb(240, 240, 240) !important;
+    }
+  }
+  .btn-off{
+    background-color: $secondary !important;
+    color: $primary !important;
+    border-color: $primary !important;
+  }
 }
 
 
+.frPreview{
+  color: $primary !important;
+  svg{
+    color: gray !important;
+    &:hover{
+      color: $primary !important;
+    }
+  }
+  h6{
+    margin-bottom: 0;
+  }
+}
