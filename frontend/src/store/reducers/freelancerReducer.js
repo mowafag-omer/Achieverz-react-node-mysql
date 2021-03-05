@@ -52,7 +52,9 @@ export default function authReducer(state = initialState, action) {
         hasNoProfile: true,
         profile: null,
         experiences: null,
-        loaded: false
+        profileLoaded: false,
+        expLoaded: false,
+        hasEx: false
       }
     default:
       return state;

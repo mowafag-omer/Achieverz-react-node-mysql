@@ -3,7 +3,7 @@ import {X} from 'react-bootstrap-icons'
 
 const ExPreview = ({exps, deleteExp}) => {
   return (
-    <div className="d-flex flex-column mt-4">
+    <div className="ex-preview d-flex flex-column mt-4">
         {exps.map((exp, index) => 
           <ul className="w-100 list-group list-group-flush shadow-sm p-2 mb-3 mx-auto border rounded">
             <li className="list-group-item d-flex justify-content-between">

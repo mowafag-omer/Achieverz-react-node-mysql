@@ -2,8 +2,12 @@
   ul{
     padding: 0;
     list-style: none;
+    .ellipsis{
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis; 
+    }
     li{
-
       .skills{
         display: flex;
         flex-wrap: wrap;

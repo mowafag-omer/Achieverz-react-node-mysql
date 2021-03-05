@@ -10,7 +10,9 @@ import Signup from '../components/Signup/Signup'
 import EmCreateProfile from '../components/Employer/EmCreateProfile/EmCreateProfile'
 import EmployerDashboard from '../components/Employer/EmployerDashboard/EmployerDashboard'
 import EmProjects from '../components/Employer/EmProjects/EmProjects'
+import Projects from '../components/Employer/Project/Project'
 import FrCreateProfile from '../components/Freelancer/FrCreateProfile/FrCreateProfile'
+import FreelancerDashboard from '../components/Freelancer/FreelancerDashboard/FreelancerDashboard'
 
 const Routes = () => {
   return (
@@ -20,11 +22,13 @@ const Routes = () => {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Signin} />
         <Route path="/Signup" component={Signup} />
-        <PrivateRoute path="/loading" component={Loading} />
-        <PrivateRoute path="/emCreateProfile" component={EmCreateProfile} />
-        <PrivateRoute path="/EmployerDashboard" component={EmployerDashboard} />
-        <PrivateRoute path="/EmProjects" component={EmProjects} />
-        <Route path="/FrCreateProfile" component={FrCreateProfile} />
+        <PrivateRoute path="/loading" component={Loading} user="employer" />
+        <PrivateRoute path="/emCreateProfile" component={EmCreateProfile} user="employer" />
+        <PrivateRoute path="/EmployerDashboard" component={EmployerDashboard} user="employer" />
+        <PrivateRoute path="/EmProjects" component={EmProjects} user="employer" />
+        <PrivateRoute path="/project" component={Projects} user="employer" />
+        <Route path="/frCreateProfile" component={FrCreateProfile} />
+        <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} />
       </Switch>
       <Footer />
     </Router>

@@ -1,1 +1,61 @@
-/* No CSS *//*# sourceMappingURL=FrNav.css.map */
+.fr-nav {
+  background-color: #2b3247 !important;
+  border-bottom: 2px solid #ffc107 !important;
+}
+
+.fr-nav .navbar-brand {
+  color: #ffc107 !important;
+}
+
+.fr-nav .btn, .fr-nav .btn-primary {
+  border-color: #dadada;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.fr-nav .btn:hover, .fr-nav .btn-primary:hover {
+  background-color: #ffc107 !important;
+  color: #2b3247 !important;
+}
+
+.fr-nav .btn:active, .fr-nav .btn-primary:active {
+  background-color: #dadada !important;
+  color: #2b3247 !important;
+}
+
+.fr-nav .dropdown {
+  padding: 0 !important;
+}
+
+.fr-nav .dropdown .dropdown-toggle {
+  padding: 0 !important;
+}
+
+.fr-nav .dropdown .dropdown-toggle .avatar {
+  vertical-align: middle;
+  width: 35px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  -webkit-transition: 1S;
+  transition: 1S;
+}
+
+.fr-nav .dropdown .dropdown-toggle .nav-link {
+  padding: 0 !important;
+  -webkit-transition: 1S;
+  transition: 1S;
+}
+
+.fr-nav .dropdown .dropdown-toggle:after {
+  display: none !important;
+}
+
+.fr-nav .dropdown .dropdown-menu {
+  top: 110% !important;
+  left: -80% !important;
+}
+
+.fr-nav .dropdown .dropdown-menu .dropdown-item {
+  padding: .25rem .80rem !important;
+}
+/*# sourceMappingURL=FrNav.css.map */

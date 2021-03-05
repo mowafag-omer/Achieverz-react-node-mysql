@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loadUser } from '../../store/actions/authActions'
 import Nav from './Nav/Nav'
 import EmNav from '../Employer/EmNav/EmNav'
+import FrNav from '../Freelancer/FrNav/FrNav'
 
 export const Header = () => {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ export const Header = () => {
     <>
       { !user.isAuthenticated && <Nav />}
       { user.isAuthenticated && user.type === 'employer' && <EmNav /> }
+      { user.isAuthenticated && user.type === 'freelancer' && <FrNav /> }
     </>
   )
 }

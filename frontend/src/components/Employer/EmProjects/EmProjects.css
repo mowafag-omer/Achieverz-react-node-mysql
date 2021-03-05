@@ -1,0 +1,17 @@
+.em-projects .emp-title {
+  border-left: 3px solid #ffc107;
+}
+
+.em-projects .overflow-auto {
+  max-height: 75vh;
+}
+
+.em-projects .overflow-auto::-webkit-scrollbar {
+  display: none;
+}
+
+.em-projects a {
+  color: #2b3247;
+  text-decoration: none;
+}
+/*# sourceMappingURL=EmProjects.css.map */

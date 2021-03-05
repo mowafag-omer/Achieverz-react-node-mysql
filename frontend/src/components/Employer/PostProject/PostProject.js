@@ -13,10 +13,10 @@ const PostProject = ({classes}) => {
   const projects = useSelector(state => state.projects)
   const dispatch = useDispatch()
   
-  const skillsList = [...projects.skills]
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+  // arr1.filter(x => arr2.indexOf(x) === -1)
   // const addSkill = (push, skill) => skill && push('') 
 
   const initialValues = {
@@ -99,7 +99,7 @@ const PostProject = ({classes}) => {
                           placeholder="Ajouter une compétence requise"
                         />
                         {values.list && <ul className="list-group position-absolute skills-list">
-                          {skillsList.filter(x => skills.indexOf(x) === -1).map(pskill =>
+                          {projects.skills.map(pskill =>
                             <li 
                               className='list-group-item skill'
                               onClick={() => {

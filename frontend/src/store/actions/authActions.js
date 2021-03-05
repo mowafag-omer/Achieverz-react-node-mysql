@@ -9,9 +9,11 @@ import {
   AUTH_ERROR,
   SIGN_OUT,
   CLEAR_PROJECTS,
-  CLEAR_EMPLOYER 
+  CLEAR_EMPLOYER,
+  CLEAR_FREELANCER 
 } from '../types'
 import { loadEmployer } from './employerActions'
+import { loadFreelancer, loadExperiences } from './freelancerActions'
 import { loadProjects, loadCategories, loadskills } from '../../store/actions/projectAction'
 import { returnErrors } from './errorActions'
 
@@ -31,7 +33,12 @@ export const loadUser = (token) => (dispatch) => {
         dispatch(loadCategories())
         dispatch(loadskills())
         dispatch(loadProjects(userId))
-      } 
+      } else if(type === 'freelancer'){
+        dispatch(loadCategories())
+        dispatch(loadskills())
+        dispatch(loadExperiences(userId))
+        dispatch(loadFreelancer(userId))
+      }
     })
   } else {
     dispatch({ type: AUTH_ERROR })
@@ -72,4 +79,5 @@ export const signOut = () => (dispatch) =>{
   dispatch({ type: SIGN_OUT })
   dispatch({ type: CLEAR_PROJECTS })
   dispatch({ type: CLEAR_EMPLOYER })
+  dispatch({ type: CLEAR_FREELANCER })
 }

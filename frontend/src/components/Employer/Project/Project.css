@@ -1,15 +1,4 @@
-.preview ul {
-  padding: 0;
-  list-style: none;
-}
-
-.preview ul .ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.preview ul li .skills {
+.project .skills {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +8,7 @@
   list-style: none;
 }
 
-.preview ul li .skills li {
+.project .skills li {
   border: 1px solid gray;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -28,4 +17,4 @@
   margin-right: .3rem;
   margin-left: .3rem;
 }
-/*# sourceMappingURL=ProjectPreview.css.map */
+/*# sourceMappingURL=Project.css.map */
