@@ -1,7 +1,9 @@
-import { PROJECTS_LOADED, CATEGORIES_LOADED, SKILLS_LOADED, CLEAR_PROJECTS } from '../types'
+import { PROJECTS_LOADED, APPLICATIONS_LOADED, NO_APPLINTIONS, CATEGORIES_LOADED, SKILLS_LOADED, CLEAR_PROJECTS } from '../types'
 
 const initialState = {
   projects: [],
+  hasApplic: false,
+  applications: [],
   categories: [],
   skills: [],
   loaded: false
@@ -14,6 +16,17 @@ export default function projectReducer(state = initialState, action) {
         ...state,
         projects: action.payload,
         loaded: true
+      }  
+    case APPLICATIONS_LOADED:
+      return {
+        ...state,
+        applications: action.payload,
+        hasApplic: true
+      }  
+    case NO_APPLINTIONS:
+      return {
+        ...state,
+        hasApplic: false
       }  
     case CATEGORIES_LOADED:
       return {
@@ -28,6 +41,8 @@ export default function projectReducer(state = initialState, action) {
     case CLEAR_PROJECTS:
       return {
         projects: [],
+        hasApplic: false,
+        applications: [],
         categories: [],
         loaded: false
       } 

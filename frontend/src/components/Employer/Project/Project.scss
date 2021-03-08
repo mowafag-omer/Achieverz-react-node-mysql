@@ -12,4 +12,11 @@
       margin-left: .3rem ;
     }  
   } 
+  .avatar {
+    vertical-align: middle;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid gainsboro;
+    transition: 1S;
+  }
 }

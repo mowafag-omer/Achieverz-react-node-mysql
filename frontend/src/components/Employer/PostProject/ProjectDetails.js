@@ -15,7 +15,7 @@ const projectDetails = ({values, categories}) => {
             <li>Nom de projet : {values.project}</li>
             <li>Description : {values.description}</li>
             <li>Secteur : {name.category_name}</li>
-            {values.skills[0] &&
+            {!!values.skills[0] &&
               <li className="skills">Compétences requises : 
                 <ul>
                   {values.skills.map((skill, index) => skill && 

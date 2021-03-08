@@ -17,4 +17,13 @@
   margin-right: .3rem;
   margin-left: .3rem;
 }
+
+.project .avatar {
+  vertical-align: middle;
+  width: 70px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  -webkit-transition: 1S;
+  transition: 1S;
+}
 /*# sourceMappingURL=Project.css.map */

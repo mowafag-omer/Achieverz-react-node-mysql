@@ -3,7 +3,8 @@
   border-bottom: 2px solid #ffc107 !important;
 }
 
-.Em-nav .navbar-brand {
+.Em-nav .navbar-brand a {
+  text-decoration: none;
   color: #ffc107 !important;
 }
 
@@ -52,11 +53,21 @@
 
 .Em-nav .dropdown .dropdown-menu {
   top: 110% !important;
-  left: -80% !important;
+  left: -110px !important;
 }
 
 .Em-nav .dropdown .dropdown-menu .dropdown-item {
   padding: .25rem .80rem !important;
+}
+
+.Em-nav .dropdown .dropdown-menu .dropdown-item:active {
+  background-color: #2b3247 !important;
+  color: white;
+}
+
+.Em-nav .dropdown .dropdown-menu a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .s-nav .navbar-nav .nav-link {

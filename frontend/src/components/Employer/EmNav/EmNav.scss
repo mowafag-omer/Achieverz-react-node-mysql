@@ -4,7 +4,10 @@
   background-color: $primary !important; //
   border-bottom: 2px solid $amber !important;
   .navbar-brand{
-    color: $amber !important;
+    a{
+      text-decoration: none;
+      color: $amber !important;
+    }
   }
   .btn, .btn-primary{ 
     border-color: $secondary;
@@ -48,9 +51,17 @@
     }  
     .dropdown-menu{
       top: 110% !important;
-      left: -80% !important;
+      left: -110px !important;
       .dropdown-item{
         padding: .25rem .80rem !important;
+        &:active{
+          background-color: $primary !important;
+          color: white;
+        }
+      }
+      a{
+        text-decoration: none;
+        color: inherit;
       }
     }  
   }

@@ -16,6 +16,19 @@ router.get('/profile/:id', checkAuth, (req, res) => {
   })
 })
 
+.get('/profiles', checkAuth, (req, res) => {
+  const sql = 'SELECT * FROM freelancers_profiles'
+
+  db.query(sql, (err, results) => {
+    if(err) throw err
+    if(results.length) {
+      res.status(200).json(results)
+    } else {
+      res.status(204).json("No Content")
+    }
+  })
+})
+
 .get('/experiences/:id', checkAuth, (req, res) => {
   const sql = `SELECT * FROM experiences WHERE user_id = '${req.params.id}'`
 

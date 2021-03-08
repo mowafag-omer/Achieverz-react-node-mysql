@@ -13,8 +13,14 @@ import {
   CLEAR_FREELANCER 
 } from '../types'
 import { loadEmployer } from './employerActions'
-import { loadFreelancer, loadExperiences } from './freelancerActions'
-import { loadProjects, loadCategories, loadskills } from '../../store/actions/projectAction'
+import { loadFreelancer, loadExperiences, loadAllFreelancer } from './freelancerActions'
+import { loadAllProjects, 
+  loadProjects, 
+  loadFrApplication, 
+  loadEmApplication, 
+  loadCategories, 
+  loadskills 
+} from '../../store/actions/projectAction'
 import { returnErrors } from './errorActions'
 
 const config = {headers: {'Content-Type': 'application/json'}}
@@ -32,10 +38,14 @@ export const loadUser = (token) => (dispatch) => {
         dispatch(loadEmployer(userId))
         dispatch(loadCategories())
         dispatch(loadskills())
+        dispatch(loadAllFreelancer())
+        dispatch(loadEmApplication(userId))
         dispatch(loadProjects(userId))
       } else if(type === 'freelancer'){
         dispatch(loadCategories())
         dispatch(loadskills())
+        dispatch(loadFrApplication(userId))
+        dispatch(loadAllProjects())
         dispatch(loadExperiences(userId))
         dispatch(loadFreelancer(userId))
       }

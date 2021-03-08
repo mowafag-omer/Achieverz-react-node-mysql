@@ -11,8 +11,11 @@ import EmCreateProfile from '../components/Employer/EmCreateProfile/EmCreateProf
 import EmployerDashboard from '../components/Employer/EmployerDashboard/EmployerDashboard'
 import EmProjects from '../components/Employer/EmProjects/EmProjects'
 import Projects from '../components/Employer/Project/Project'
+import EmProfile from '../components/Employer/EmProfile/EmProfile'
 import FrCreateProfile from '../components/Freelancer/FrCreateProfile/FrCreateProfile'
 import FreelancerDashboard from '../components/Freelancer/FreelancerDashboard/FreelancerDashboard'
+import FrOpenProject from '../components/Freelancer/FrOpenProject/FrOpenProject'
+import OpenProjects from '../components/OpenProjects/OpenProjects'
 
 const Routes = () => {
   return (
@@ -22,13 +25,16 @@ const Routes = () => {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Signin} />
         <Route path="/Signup" component={Signup} />
-        <PrivateRoute path="/loading" component={Loading} user="employer" />
+        <Route path="/loading" component={Loading} />
         <PrivateRoute path="/emCreateProfile" component={EmCreateProfile} user="employer" />
         <PrivateRoute path="/EmployerDashboard" component={EmployerDashboard} user="employer" />
         <PrivateRoute path="/EmProjects" component={EmProjects} user="employer" />
         <PrivateRoute path="/project" component={Projects} user="employer" />
-        <Route path="/frCreateProfile" component={FrCreateProfile} />
-        <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} />
+        <PrivateRoute path="/emProfile" component={EmProfile} user="employer" />
+        <PrivateRoute path="/frCreateProfile" component={FrCreateProfile} />
+        <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} user="freelancer" />
+        <Route path="/OpenProjects" component={OpenProjects} />
+        <PrivateRoute path="/FrOpenProject" component={FrOpenProject} user="freelancer" />
       </Switch>
       <Footer />
     </Router>

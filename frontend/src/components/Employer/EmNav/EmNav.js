@@ -16,48 +16,56 @@ const EmNav = () => {
   return (
     <div>
       <Navbar className='Em-nav justify-content-between navbar-expand'  variant="dark">
-        <Navbar.Brand href="/">ACHIEVERZ</Navbar.Brand>
+        <Navbar.Brand><Link to="/">ACHIEVERZ</Link></Navbar.Brand>
         <Nav>
-          {projectsLoaded && <PostProject />}
+          <div className="d-none d-sm-block" >
+            {projectsLoaded && <PostProject />}
+          </div>
         </Nav>
         <Nav>
           <NavDropdown title={
-            <div className="">
-              <img className="mr-5 avatar" src={avatar} alt="Img de profile"/>
+            <div>
+              <img className="mr-1 avatar" src={avatar} alt="Img de profile"/>
             </div>
           } id="collasible-nav-dropdown">
-            <NavDropdown.Item href="">Profile</NavDropdown.Item>
+            <Link to="/emProfile" className="dropdown-item">Profil</Link>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnecter</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>
       
-      <Navbar className='s-nav py-0' bg="light" variant="light">
-        <Nav className='py-0'>
-          <Link
-            to="/EmployerDashboard" 
-            className={`nav-link ${location.pathname === '/EmployerDashboard' && 'nav-active'}`} 
-          >
-            Dashboard
-          </Link> 
-          {[
-            {project: 'open', title: 'Projets ouverts'},
-            {project: 'inprogress', title: 'Projets en cours'}
-            ].map(p => 
-              <Link 
-                to={{
-                  pathname: "/EmProjects",
-                  state: {project: p.project, title: p.title}
-                }} 
-                className={`nav-link ${(location.pathname === '/EmProjects' || location.pathname === '/project') &&
-                  location.state.project === p.project && 'nav-active'}`
-                }
-              >
-                {p.title}
-              </Link>
-            )}
-        </Nav>
+      <Navbar collapseOnSelect className='s-nav py-0' expand="md" bg="light" variant="light">
+        <Navbar.Toggle className="ml-auto m-2 border border-dark" aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className='flex-shrink-lg-0 py-0'>
+            <Link
+              to="/EmployerDashboard" 
+              className={`nav-link mx-auto ${location.pathname === '/EmployerDashboard' && 'nav-active'}`} 
+            >
+              Dashboard
+            </Link> 
+            {[
+              {project: 'open', title: 'Projets Ouverts'},
+              {project: 'inprogress', title: 'Projets Confirmés'}
+              ].map(p => 
+                <Link 
+                  to={{
+                    pathname: "/EmProjects",
+                    state: {project: p.project, title: p.title}
+                  }} 
+                  className={`nav-link mx-auto ${(location.pathname === '/EmProjects' || location.pathname === '/project') &&
+                    location.state.project === p.project && 'nav-active'}`
+                  }
+                >
+                  {p.title}
+                </Link>
+              )}
+              <div className="d-sm-none my-3 mx-auto" style={{width:'fit content'}}>
+                {projectsLoaded && <PostProject className="" />}
+              </div>
+          </Nav>
+        </Navbar.Collapse>          
       </Navbar>
     </div>
   )

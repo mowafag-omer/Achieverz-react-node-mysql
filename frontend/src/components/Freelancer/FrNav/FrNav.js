@@ -4,21 +4,26 @@ import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import { signOut } from '../../../store/actions/authActions'
+import { Search } from 'react-bootstrap-icons'
 import avatar from '../../../assets/photo/avatar.png'
 import './FrNav.css'
 
 const FrNav = () => {
   const dispatch = useDispatch()
   const location = useLocation()
-
+  
   return (
     <div>
       <Navbar className='fr-nav justify-content-between navbar-expand'  variant="dark">
-        <Navbar.Brand href="/">Achivierz</Navbar.Brand>
+        <Navbar.Brand><Link to="/">ACHIEVERZ</Link></Navbar.Brand>
+        <Nav>
+          <button className="btn d-none d-sm-block"><Link to='/OpenProjects'>Trouver un Projet</Link></button>
+          <Link to='/OpenProjects'><Search size={30} className="d-sm-none text-warning" /></Link>
+        </Nav>
         <Nav>
           <NavDropdown title={
             <div className="">
-              <img className="mr-5 avatar" 
+              <img className="avatar" 
                   src={avatar} 
                   alt=""
               />
@@ -31,21 +36,24 @@ const FrNav = () => {
         </Nav>
       </Navbar>
 
-      <Navbar className='s-nav py-0' bg="light" variant="light">
-        <Nav className='py-0'>
-          <Link
-            to="/freelancerDashboard" 
-            className={`nav-link ${location.pathname === '/freelancerDashboard' && 'nav-active'}`} 
-          >
-            Dashboard
-          </Link> 
-          <Link 
-            to="/FrProjects" 
-            className={`nav-link ${location.pathname === '/FrProjects' && 'nav-active'}`}
-          >
-            Mes projects
-          </Link> 
-        </Nav>
+      <Navbar collapseOnSelect className='s-nav py-0' expand="md" bg="light" variant="light">
+        <Navbar.Toggle className="ml-auto m-2 border border-dark" aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className='flex-shrink-lg-0 py-0'>
+            <Link
+              to="/freelancerDashboard" 
+              className={`nav-link mx-auto ${location.pathname === '/freelancerDashboard' && 'nav-active'}`} 
+            >
+              Dashboard
+            </Link> 
+            <Link 
+              to="/FrProjects" 
+              className={`nav-link mx-auto ${location.pathname === '/FrProjects' && 'nav-active'}`}
+            >
+              Mes projects
+            </Link> 
+          </Nav>
+        </Navbar.Collapse>          
       </Navbar>
     </div>
   )

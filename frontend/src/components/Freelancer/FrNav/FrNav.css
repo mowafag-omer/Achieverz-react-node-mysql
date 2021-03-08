@@ -7,6 +7,11 @@
   color: #ffc107 !important;
 }
 
+.fr-nav .navbar-brand a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
 .fr-nav .btn, .fr-nav .btn-primary {
   border-color: #dadada;
   -webkit-transition: .4s;
@@ -21,6 +26,11 @@
 .fr-nav .btn:active, .fr-nav .btn-primary:active {
   background-color: #dadada !important;
   color: #2b3247 !important;
+}
+
+.fr-nav .btn a, .fr-nav .btn-primary a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .fr-nav .dropdown {
@@ -52,7 +62,7 @@
 
 .fr-nav .dropdown .dropdown-menu {
   top: 110% !important;
-  left: -80% !important;
+  left: -110px !important;
 }
 
 .fr-nav .dropdown .dropdown-menu .dropdown-item {

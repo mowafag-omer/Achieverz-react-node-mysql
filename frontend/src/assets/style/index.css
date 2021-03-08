@@ -37,6 +37,11 @@ code {
   background: #555;
 }
 
+.page-title {
+  border-left: 3px solid #ffc107;
+  color: #2b3247 !important;
+}
+
 .btn, .btn-primary {
   background-color: #2b3247 !important;
   border-width: 1.4px;
@@ -60,6 +65,11 @@ code {
   background-color: #ffc107 !important;
   color: #2b3247 !important;
   border-color: #2b3247 !important;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #2b3247 !important;
 }
 
 .form-control {
@@ -87,5 +97,18 @@ code {
 
 .form-control::placeholder {
   color: #2b3247 !important;
+}
+
+.hover-shadow:hover {
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.icon-hover:hover {
+  color: red;
+}
+
+.pointer {
+  cursor: pointer;
 }
 /*# sourceMappingURL=index.css.map */

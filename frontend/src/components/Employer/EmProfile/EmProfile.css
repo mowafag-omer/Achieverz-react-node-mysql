@@ -1,0 +1,9 @@
+.profile .avatar {
+  vertical-align: middle;
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  -webkit-transition: 1S;
+  transition: 1S;
+}
+/*# sourceMappingURL=EmProfile.css.map */

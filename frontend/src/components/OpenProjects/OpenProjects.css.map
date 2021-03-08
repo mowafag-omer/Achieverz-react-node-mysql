@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,cADY,CACZ,KAAK,CAAA;EACH,KAAK,EAAE,gBAAgB;EACvB,MAAM,EAAE,gBAAgB;CACzB",
+    "sources": [
+        "OpenProjects.scss"
+    ],
+    "names": [],
+    "file": "OpenProjects.css"
+}

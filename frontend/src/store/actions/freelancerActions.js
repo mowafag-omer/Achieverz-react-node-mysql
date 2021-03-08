@@ -6,9 +6,29 @@ import {
   EXPERIENCES_LOADED,
   FR_NOT_FOUNDED,
   EX_NOT_FOUNDED,
-  EX_ADDED_SUCCESS
+  EX_ADDED_SUCCESS,
+  PROFILES_NOT_FOUNDED,
+  ALL_PROFILES_LOADED
 } from "../types"
 
+
+export const loadAllFreelancer = () => dispatch => {
+  axios.get(`http://localhost:3001/fr/profiles`, { 
+    headers: {
+      'Content-Type': 'application/json',
+      'auth' : localStorage.getItem('token')
+    }
+  })
+  .then((res) => {
+    res.status === 204 && dispatch({ type: PROFILES_NOT_FOUNDED })
+    res.status === 200 && 
+      dispatch({ 
+        type: ALL_PROFILES_LOADED,
+        payload: res.data
+      })
+  })
+  .catch(() => dispatch({ type: AUTH_ERROR }))
+} 
 
 export const loadFreelancer = (id) => dispatch => {
   axios.get(`http://localhost:3001/fr/profile/${id}`, { 

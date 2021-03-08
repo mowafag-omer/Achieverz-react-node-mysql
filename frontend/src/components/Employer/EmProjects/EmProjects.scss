@@ -1,9 +1,6 @@
 @import '../../../assets/style/variables.scss';
 
 .em-projects{
-  .emp-title{
-    border-left: 3px solid $amber;
-  }
   .overflow-auto{
     max-height: 75vh;
     &::-webkit-scrollbar {
