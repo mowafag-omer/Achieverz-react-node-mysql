@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useSelector } from 'react-redux'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './ExperiencesForm.css'
@@ -7,6 +8,8 @@ import ExPreview from '../ExPreview'
 const ExperiencesForm = ({exps, setexps, setstep}) => {
   const [update, setupdate] = useState(false)
   const [showform, setshowform] = useState(exps.length ? false : true)
+  const user = useSelector(state => state.auth)
+
 
   const initialValues = {
     title: '',
@@ -14,7 +17,7 @@ const ExperiencesForm = ({exps, setexps, setstep}) => {
     fdate: '',
     tdate: '',
     description: '',
-    userId: 3,
+    userId: user.userId,
     iscw: false
   }
 

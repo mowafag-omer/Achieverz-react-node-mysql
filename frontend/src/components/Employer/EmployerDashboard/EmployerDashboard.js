@@ -9,7 +9,7 @@ export const EmployerDashboard = (props) => {
   const employer = useSelector(state => state.employer)
   const projects = useSelector(state => state.projects)
   const categories = useSelector(state => state.projects.categories)
-  const applications = (id) => projects.applications.filter(a => a.project_id === id).length
+  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id).length : []
       
   const recentPro = projects.projects.sort((a, b) => {
     const dateA = new Date(a.posting_date), dateB = new Date(b.posting_date)

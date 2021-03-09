@@ -18,12 +18,13 @@ const HomeNav = () => {
             <Button className="m-1">Trouver un job</Button>
           </>)} 
         </Nav>
+        {location.pathname !== '/admin' && <>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="flex-shrink-lg-0">
             <Link className={`nav-link ${location.pathname === '/login' && 'active'}`} to="/login">
               <BoxArrowInRight size={21} className="mr-2 icon" /> 
-              <span>Se conecter</span>
+              <span>Se connecter</span>
             </Link>
             <Link className={`nav-link ${location.pathname === '/Signup' && 'active'}`} to="/Signup">
               <PencilSquare size={21} className="mr-2 icon" /> 
@@ -31,6 +32,7 @@ const HomeNav = () => {
             </Link>
           </Nav>
         </Navbar.Collapse>
+        </>}
       </Navbar>
     </>
   )

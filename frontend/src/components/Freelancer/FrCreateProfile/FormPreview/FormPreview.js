@@ -11,7 +11,7 @@ const FrFormPreview = ({userPI, exps, userskills, setstep, handleForm}) => {
       <hr className="w-100"></hr>
 
       <PrsoInfoPreview userPI={userPI} setstep={setstep} />
-      {exps.length && <FormExPreview exps={exps} setstep={setstep}/>}
+      {exps.length > 0 && <FormExPreview exps={exps} setstep={setstep}/>}
       {userskills.category && userskills.skills[0] && <SkillsPreview userskills={userskills} setstep={setstep} />}
       
       <div className="form-btn mt-2 d-flex">

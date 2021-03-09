@@ -5,12 +5,15 @@ import {
   EMPLOYER_LOADED,
   EM_NOT_FOUNDED
 } from "../types"
-// import { loadProjects, loadCategories } from '../../store/actions/projectAction'
+import { loadUser } from '../../store/actions/authActions'
 // import { returnErrors } from './errorActions'
 
-export const emCreateProfile = (body) => dispatch => {
-  axios.post('http://localhost:3001/em/create-profile', body)
-  .then(() => dispatch({ type: EM_CREATE_SUCCESS }))
+export const emCreateProfile = (body, token, userId) => dispatch => {
+  axios.post('http://localhost:3001/em/create-profile', {...body, userId})
+  .then(() =>{
+    dispatch({ type: EM_CREATE_SUCCESS })
+    dispatch(loadUser(token))
+  })
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }
 

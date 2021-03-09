@@ -19,6 +19,7 @@ export default function authReducer(state = initialState, action) {
     case EM_CREATE_SUCCESS:
       return {
         ...state,
+        hasNoProfil: false
       }
     case EM_NOT_FOUNDED:
       return {

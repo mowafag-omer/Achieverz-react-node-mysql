@@ -46,6 +46,7 @@ export const postProject = (project, userId) => dispatch => {
     }
   })
   .then((res) => {
+    dispatch(loadProjects(userId))
     dispatch(loadEmApplication(userId))
   })
 } 

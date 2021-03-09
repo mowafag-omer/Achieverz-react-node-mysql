@@ -13,7 +13,7 @@ import {
 const initialState = {
   hasNoProfile: true,
   profile: null,
-  experiences: null,
+  experiences: [],
   allprofiles: [],
   allprofilesLoaded: false,
   profileLoaded: false,
@@ -65,7 +65,7 @@ export default function authReducer(state = initialState, action) {
       }
     case CLEAR_FREELANCER:
       return {
-        hasNoProfile: true,
+        hasNoProfile: false,
         profile: null,
         experiences: null,
         allprofiles: [],

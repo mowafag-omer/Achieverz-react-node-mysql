@@ -10,6 +10,7 @@ import './EmNav.css'
 
 const EmNav = () => {
   const projectsLoaded = useSelector(state => state.projects.loaded)
+  const employer = useSelector(state => state.employer.hasNoProfile)
   const dispatch = useDispatch()
   const location = useLocation()
 
@@ -34,7 +35,7 @@ const EmNav = () => {
           </NavDropdown>
         </Nav>
       </Navbar>
-      
+      {!employer && 
       <Navbar collapseOnSelect className='s-nav py-0' expand="md" bg="light" variant="light">
         <Navbar.Toggle className="ml-auto m-2 border border-dark" aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -47,7 +48,7 @@ const EmNav = () => {
             </Link> 
             {[
               {project: 'open', title: 'Projets Ouverts'},
-              {project: 'inprogress', title: 'Projets Confirmés'}
+              {project: 'confirmed', title: 'Projets Confirmés'}
               ].map(p => 
                 <Link 
                   to={{
@@ -67,6 +68,7 @@ const EmNav = () => {
           </Nav>
         </Navbar.Collapse>          
       </Navbar>
+      }
     </div>
   )
 }

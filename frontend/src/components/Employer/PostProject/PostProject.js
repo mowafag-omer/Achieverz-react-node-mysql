@@ -7,7 +7,7 @@ import { postProject } from '../../../store/actions/projectAction'
 import ProjectDetails from './ProjectDetails'
 import './postProject.css'
 
-const PostProject = ({classes}) => {
+const PostProject = ({classes, props}) => {
   const [show, setShow] = useState(false)
   const userId = useSelector(state => state.auth.userId)
   const projects = useSelector(state => state.projects)
@@ -34,9 +34,9 @@ const PostProject = ({classes}) => {
 
   const onSubmit = (values) => {
     values.skills.pop()
-    console.log(values)
-    console.log(userId);
     dispatch(postProject(values, userId))
+    handleClose()
+    props.history.push("/EmployerDashboard")
   }
 
   return (<>

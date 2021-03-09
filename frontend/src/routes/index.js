@@ -31,10 +31,11 @@ const Routes = () => {
         <PrivateRoute path="/EmProjects" component={EmProjects} user="employer" />
         <PrivateRoute path="/project" component={Projects} user="employer" />
         <PrivateRoute path="/emProfile" component={EmProfile} user="employer" />
-        <PrivateRoute path="/frCreateProfile" component={FrCreateProfile} />
+        <PrivateRoute path="/frCreateProfile" component={FrCreateProfile} user="freelancer" />
         <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} user="freelancer" />
         <Route path="/OpenProjects" component={OpenProjects} />
         <PrivateRoute path="/FrOpenProject" component={FrOpenProject} user="freelancer" />
+        <Route path="/admin" component={Signin} />
       </Switch>
       <Footer />
     </Router>

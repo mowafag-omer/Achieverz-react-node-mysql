@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { emCreateProfile } from '../../../store/actions/employerActions'
 
-const EmCreateProfile = () => {
+
+const EmCreateProfile = (props) => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.auth)
+  const employer = useSelector(state => state.employer)
+
   const initialValues = {
     fname: '',
     lname: '',
@@ -10,7 +17,7 @@ const EmCreateProfile = () => {
     phone: '',
     country: '',
     city: '',
-    isCompany: 0,
+    isCompany: false,
     companyName: '',
     location: ''
   }
@@ -32,8 +39,17 @@ const EmCreateProfile = () => {
     })
   })
 
-  const onSubmit = (values, submitProps) => {
-    console.log(values)
+  useEffect(() => {
+    employer.hasNoProfile === false && props.history.push("/loading")
+  })
+
+  const onSubmit = (values) => {
+    if(!values.isCompany){
+      values.companyName = ''
+      values.location = ''
+    }
+    dispatch(emCreateProfile(values, user.token, user.userId))
+    props.history.push("/EmployerDashboard")
   }
 
   return (
@@ -42,7 +58,7 @@ const EmCreateProfile = () => {
         <h4 className="text-center mt-4">Créez votre profile</h4>
         <hr className="w-50 mb-4"></hr>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {({touched, errors }) => { return (
+        {({touched, errors, values }) => { return (
           <Form className="w-50 mr-auto ml-auto mb-4">
             <div className="mb-3">
               <Field type='text' id='fname' name='fname' placeholder="Prénom" 
@@ -81,20 +97,23 @@ const EmCreateProfile = () => {
               <ErrorMessage name='city'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>            
             </div>
             <div className='mb-3'>
-              <Field type="checkbox" name="isCompany" value='1'/> Entreprise
+              <Field type="checkbox" name="isCompany" /> Entreprise
             </div>
-            <div className="mb-3">
-              <Field type='text' name='companyName' placeholder=" Nom de l'entreprise" 
-                className={touched.companyName && errors.companyName ? "border-danger form-control" : "form-control"} 
-              />
-              <ErrorMessage name='companyName'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
-            </div>
-            <div className="mb-3">
-              <Field type='text' name='location' placeholder="Adresse" 
-                className={touched.location && errors.location ? "border-danger form-control" : "form-control"} 
-              />
-              <ErrorMessage name='location'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
-            </div>
+            {values.isCompany && <> 
+              <div className="mb-3">
+                <Field type='text' name='companyName' placeholder=" Nom de l'entreprise" 
+                  className={touched.companyName && errors.companyName ? "border-danger form-control" : "form-control"} 
+                />
+                <ErrorMessage name='companyName'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
+              </div>
+              <div className="mb-3">
+                <Field type='text' name='location' placeholder="Adresse" 
+                  className={touched.location && errors.location ? "border-danger form-control" : "form-control"} 
+                />
+                <ErrorMessage name='location'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
+              </div>
+            </>}
+
             <button className="btn btn-success mr-auto" type='submit'>Valider</button>
           </Form>
         )}}

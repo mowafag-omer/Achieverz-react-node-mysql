@@ -72,11 +72,10 @@ export const signIn = ({ email, password, type }) => (dispatch) => {
 
 export const signUp = (body) => (dispatch) => {
   axios.post('http://localhost:3001/user/sign-up', body, config)
-  .then(res => 
-    dispatch({
-      type: SIGNUP_SUCCESS,
-      payload: res.data
-    })    
+  .then(res => {
+      dispatch({type: SIGNUP_SUCCESS})
+      dispatch(signIn(body))
+    }    
   )
   .catch(err => {
     const { data, status } = err.response

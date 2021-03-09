@@ -15,7 +15,7 @@ const EmProjects = () => {
   const protState = location.state
   const openProjects = projects.projects.filter(p => p.project_status === protState.project)
 
-  const applications = (id) => projects.applications.filter(a => a.project_id === id).length
+  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id).length : []
 
   const Info = {
     name: `${employer.employer.first_name} ${employer.employer.last_name}`,

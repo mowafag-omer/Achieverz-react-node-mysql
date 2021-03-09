@@ -7,19 +7,20 @@ import FrProfileWidget from '../FrProfileWidget/FrProfileWidget'
 
 const FreelancerDashboard = (props) => {
   const projects = useSelector(state => state.projects)
-  const profile = useSelector(state => state.freelancer.profile)
-  const frProjects = projects.projects.filter(p => p.project_status === 'open' && parseInt(p.required_category) === profile.category)
+  const freelancer = useSelector(state => state.freelancer)
+  const frProjects = projects.projects.filter(p => p.project_status === 'open' && parseInt(p.required_category) === freelancer.profile.category)
   
   const getprojctId = (id) =>{
-    return projects.applications.map(item => item.project_id === id ? id : 0)
-    .includes(id) ? id : 0 
+    
+    return projects.applications ? projects.applications.map(item => item.project_id === id ? id : 0)
+    .includes(id) : id || 0
   }
   
   const frOpenProjects = frProjects.filter(elem => elem.id !== getprojctId(elem.id))
   console.log(!!frOpenProjects.length);
 
   useEffect(() => {
-    // freelancer.hasNoProfile && props.history.push("/frcreateProfile")
+    freelancer.hasNoProfile && props.history.push("/frcreateProfile")
   })
 
   return (

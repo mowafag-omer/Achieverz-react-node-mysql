@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import { signIn } from '../../store/actions/authActions'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
@@ -9,15 +10,14 @@ import fr from '../../../src/assets/icons/fr.png'
 import em from '../../../src/assets/icons/em.png'
 import './signup.css'
 
-const Signup = () => {
+const Signup = (props) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.auth)
   const error = useSelector(state => state.error)
 
-  // useEffect(() => {
-  //   user.Signup_success && console.log("done") 
-  //   user.signup_error && console.log(user.signup_error)
-  // }, [user])
+  useEffect(() => {
+    user.registered && user.isAuthenticated && props.history.push("/loading")
+  }, [user, props])
 
   const initialValues = {
     email: '',
@@ -44,7 +44,7 @@ const Signup = () => {
         <h4 className="text-center">S'inscrire</h4>
         <hr className="w-100"></hr>
 
-        {/* {user.signup_error && <Alert variant="danger" className='w-50 ml-auto mr-auto'>{user.signup_error}</Alert>} */}
+        {error.id === "SIGNUP_FAIL" && <Alert variant="danger" className='col-11 col-sm-8 mx-auto text-center'>{error.msg}</Alert>}
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {({touched, errors }) => { return (
           <Form className="w-75 mr-auto ml-auto">

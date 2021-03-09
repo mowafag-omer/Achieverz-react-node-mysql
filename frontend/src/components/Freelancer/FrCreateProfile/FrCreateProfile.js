@@ -1,5 +1,5 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import useLocalStorage from '../../../assets/customHooks/useLocalStorage'
 import FormProgress from './FormProgress/FormProgress'
 import PersonalInfo from './PersonalInfo/PersonalInfo'
@@ -22,16 +22,23 @@ const userInitialValues = {
 }
 
 const skillInitialValues = {
-  category: 0,
+  category: '',
   skills: ['']
 }
 
 const FrCreateProfile = (props) => {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.auth)
+  const freelancer = useSelector(state => state.freelancer)
+
   const [step, setstep] = useLocalStorage(0)
   const [userPI, setuserPI] = useLocalStorage('userPI', userInitialValues)
   const [exps, setexps] = useLocalStorage('exps', [])
   const [userskills, setuserskills] = useLocalStorage('skills', skillInitialValues)
+
+  useEffect(() => {
+    freelancer.hasNoProfile === false && props.history.push("/loading")
+  })
 
   const handleForm = () => {
 
@@ -46,21 +53,19 @@ const FrCreateProfile = (props) => {
       bio: userPI.bio,
       category: userskills.category,
       skills: JSON.stringify(userskills.skills),
-      userid: 3
-    }
+      userid: user.userId
+     }
 
     const experiences = [...exps]
-
     const profile = {...profileinfor}
-    setstep(0)
-    // setuserPI(userInitialValues)
-    // setexps([])
-    setuserskills(skillInitialValues)
 
-    // dispatch(frCreateProfile(profile))
-    dispatch(AddExperiences(experiences))
-    console.log(experiences)
-    // props.history.push("/")
+    setstep(0)
+    setuserPI(userInitialValues)
+    setexps([])
+    setuserskills(skillInitialValues)
+    dispatch(frCreateProfile(profile, experiences, user.token))
+
+    props.history.push("/loading")
   }
 
   return (

@@ -10,6 +10,7 @@ import {
   PROFILES_NOT_FOUNDED,
   ALL_PROFILES_LOADED
 } from "../types"
+import { loadUser } from './authActions'
 
 
 export const loadAllFreelancer = () => dispatch => {
@@ -66,19 +67,23 @@ export const loadExperiences = (id) => dispatch => {
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }
 
-export const frCreateProfile = (body) => dispatch => {
+export const frCreateProfile = (body, exps, token) => dispatch => {
   axios.post('http://localhost:3001/fr/create-profile', body)
   .then((res) => { 
     console.log(res.data)
     dispatch({ type: FR_CREATE_SUCCESS })
+    exps.length > 0 && dispatch(AddExperiences(exps, body.userid))
+    dispatch(loadUser(token))
+
   })
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }
 
-export const AddExperiences = (body) => dispatch => {
+export const AddExperiences = (body, userId) => dispatch => {
   axios.post('http://localhost:3001/fr/add-experiences', body)
   .then((res) => { 
     dispatch({ type: EX_ADDED_SUCCESS })
+    dispatch(loadExperiences(userId))
   })
   .catch((err) => dispatch({ type: AUTH_ERROR }))
 }

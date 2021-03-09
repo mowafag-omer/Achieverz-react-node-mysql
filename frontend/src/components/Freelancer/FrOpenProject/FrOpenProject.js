@@ -13,7 +13,7 @@ const FrOpenProject = () => {
   const history = useHistory()
   const project = location.project
   const cateName = proStore.categories.filter(c => c.id === parseInt(project.required_category))[0].category_name 
-  const isApplied = proStore.applications.filter(a => a.project_id === project.id)
+  const isApplied = proStore.applications ? proStore.applications.filter(a => a.project_id === project.id) : []
 
   const getDays = (postDate) =>{
     const todayDate = new Date()
@@ -83,6 +83,7 @@ const FrOpenProject = () => {
           </p>
         </div>
       </div>
+      
     </div>
   )
 }

@@ -15,7 +15,8 @@ const SkillForm = ({userskills, setuserskills, setstep}) => {
   }
 
   const validationSchema = Yup.object({
-    category: Yup.number().required('Required'),
+    category: Yup.string().typeError('vous devrez ajouter au moin une compétence !').required('Required'),
+    skills: Yup.array().min(3, 'vous devrez ajouter au moin une compétence !').required('vous devrez ajouter au moin une compétence !')
   })
 
   const onSubmit = (values) => {
@@ -91,6 +92,7 @@ const SkillForm = ({userskills, setuserskills, setstep}) => {
                 ))}
               </>)
             }}</FieldArray>
+            <ErrorMessage name='skills'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
           </div>
           <hr className="w-100"></hr>
 

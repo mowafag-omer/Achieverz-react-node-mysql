@@ -16,7 +16,8 @@ const initialState = {
   loaded: false,
   userId: null,
   email: null,
-  type: null
+  type: null,
+  registered: false
 }
 
 export default function authReducer(state = initialState, action) {
@@ -45,7 +46,7 @@ export default function authReducer(state = initialState, action) {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        registered: true
       }
     case AUTH_ERROR:
     case SIGNIN_FAIL:

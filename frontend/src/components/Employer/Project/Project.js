@@ -15,7 +15,10 @@ const Project = () => {
   const profiles = useSelector(state => state.freelancer.allprofiles)
   const pro = projects.projects.filter(p => p.id === parseInt(location.state.id))[0]
   const cateName = (id) => projects.categories.filter(c => c.id === parseInt(id))[0].category_name 
-  const applications = projects.applications.filter(a => a.project_id === pro.id)
+
+  let  applications = projects.applications.filter(a => a.project_id === pro.id) || []
+  pro.project_status === 'confirmed' && (applications =  applications.filter(a => a.status === 'hired') || []) 
+
   const profile = (id) =>  profiles.filter(p => p.user_id === id)[0]
   const getSkills = (inputs) => {
     if(JSON.parse(inputs)[0]){
@@ -25,25 +28,24 @@ const Project = () => {
       return false
     }
   }
-  
-  console.log(applications.filter(a => a.status === 'hired' && a.project_id === pro.id))
-  
+    
   const handlePreHiring = (applicationId, userid) =>{
     dispatch(updateApplicationStatus(applicationId, userid, 'hired'))
     applications.filter(a => a.status === 'hired' && a.project_id === pro.id)
   } 
   
   const handleProjectUpdating = (projectId, userid) =>{
-    // dispatch(updateProjectStatus(projectId, userid, 'confirmed'))
-    applications.filter(a => a.status === 'hired' && a.project_id === pro.id)
-    .forEach(elem => console.log(elem.id))
+    const preHied = applications.filter(a => a.status === 'hired' && a.project_id === pro.id)
+    !applications.length ? alert('Aucune candidature pour ce projet !') :
+    !preHied.length && alert('Vous devriez choisir un freelance !')
+    dispatch(updateProjectStatus(projectId, userid, 'confirmed'))
+    alert('votre projet a été confirmé avec succès veuillez prendre contact avec les freelances choisis')
   } 
 
   const handledeleteProject = (projectId, id) =>{
     if(window.confirm("Vous souhaitez supprimer ce projet ?")){
-      console.log(projectId);
       dispatch(deleteProject(projectId, id))
-      alert("bien supprimé !")
+      alert("votre projet a été supprimé avec succès !")
       history.goBack()
     }
   }
@@ -72,12 +74,15 @@ const Project = () => {
           </p>
         </div>
         <div className="d-flex flex-column py-3">
-          <button 
-            className="btn mx-auto mb-2"
-            onClick={() => handleProjectUpdating(pro.id, user.userId)}
-            >
-              Confirmer et Fermer ce Projet
-            </button>    
+          {pro.project_status === 'open' ? 
+            <button 
+              className="btn mx-auto mb-2"
+              onClick={() => handleProjectUpdating(pro.id, user.userId)}
+              >
+                Confirmer et fermer ce projet
+            </button> :
+            <button className="btn mx-auto mb-2" disabled>Confirmé</button>  
+          }  
           <button 
             className="btn bg-danger mx-auto"
             onClick={() => handledeleteProject(pro.id, user.userId)}
@@ -91,10 +96,10 @@ const Project = () => {
 
       <div class="card w-100 mb-3">
         <div class="card-body">
-          {applications.map(appli => {
+          {!!applications.length && applications.map(appli => {
             const pf = profile(appli.freelancer_id)
             return(
-              <div key={appli.id} className="card shadow-sm pointer">
+              <div key={appli.id} className="card shadow-sm pointer mb-3">
                 <div class="card-header d-flex flex-column flex-sm-row flex-wrap align-items-center">
                   <img className="avatar mr-0 mr-sm-3" src={avatar} alt="Img de profile"/>
                   <div className="mt-2">
@@ -105,17 +110,17 @@ const Project = () => {
                     <span className="mr-0 mr-sm-3 mt-2 d-block"><GeoAlt size={20} className="pb-1" />{pf.city}, {pf.country}</span>
                   </div>
                   <div className="ml-sm-auto mt-3 mt-sm-1">
-                  <button className="ms-auto btn bg-danger mr-2">Refuser</button>
                   {
-                    appli.status === "pending" ?
-                    <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId)}>Recruter</button>:
+                    appli.status === "pending" ? <>
+                    <button className="ms-auto btn bg-danger mr-2">Refuser</button>
+                    <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId)}>Recruter</button></>:
                     appli.status === "hired" &&
-                    <button className="ms-auto btn">pré-recruté</button>
+                    <button className="ms-auto btn" disabled>pré-recruté</button>
                   }
                   </div>
                   {
-                    appli.status === "hired" &&
-                    <span className="">* Pour valider votre choix veuillez confirmer et fermer ce project.</span>
+                    appli.status === "hired" && pro.project_status === 'open' &&
+                    <span className="notification d-block mx-auto mt-2">* Pour valider votre choix veuillez confirmer et fermer ce project.</span>
                   }
                 </div>
                 <div class="card-body">
