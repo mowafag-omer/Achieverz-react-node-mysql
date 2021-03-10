@@ -1,0 +1,22 @@
+.freelancers{
+  .skills{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    li{
+      border: 1px solid gray;
+      width: fit-content;
+      padding: .1rem .5rem;
+      margin-right: .3rem ;
+      margin-left: .3rem ;
+    }  
+  } 
+  .avatar {
+    vertical-align: middle;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid gainsboro;
+    transition: 1S;
+  }
+} 

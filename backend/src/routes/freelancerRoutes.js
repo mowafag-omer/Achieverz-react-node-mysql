@@ -42,6 +42,19 @@ router.get('/profile/:id', checkAuth, (req, res) => {
   })
 })
 
+.get('/all-experiences', checkAuth, (req, res) => {
+  const sql = 'SELECT * FROM experiences'
+
+  db.query(sql, (err, results) => {
+    if(err) throw err
+    if(results.length) {
+      res.status(200).json(results)
+    } else {
+      res.status(204).json("No Content")
+    }
+  })
+})
+
 .post('/create-profile', (req, res) =>{
   const sql = 'INSERT INTO freelancers_profiles (first_name, last_name, email, phone_num, city, country, profile_title, bio, category, skills, user_id) VALUES ?'
 

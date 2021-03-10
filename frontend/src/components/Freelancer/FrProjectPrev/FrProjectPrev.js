@@ -1,8 +1,8 @@
 import React from 'react'
-import { GeoAlt, Person } from 'react-bootstrap-icons'
+import { GeoAlt, Person, CheckCircle, XCircleFill } from 'react-bootstrap-icons'
 
-const FrProjectPrev = ({ project }) => {
-  // console.log(project);
+const FrProjectPrev = ({ project, status }) => {
+  console.log(status)
 
   const getSkills = (inputs) => {
     if(JSON.parse(inputs)[0]){
@@ -14,11 +14,23 @@ const FrProjectPrev = ({ project }) => {
   }
 
   return (
-    <div class="card mb-3 hover-shadow">
+    <div class="card mb-3">
       <div class="card-header p-1 px-3">
         <h5>{project.project_title}</h5>
         <span className="mr-2"><Person size={20} className="pb-1" />{project.first_name}</span>
         <span className="mr-2"><GeoAlt size={20} className="pb-1" />{project.city}, {project.country}</span>
+        {
+          status === 'pending' ?         
+            <div className="my-2 alert-primary p-1 rounded" style={{width:'fit-content'}}>
+              Candidature envoyée
+              <CheckCircle className="pb-1 ml-1" /> 
+            </div> :
+          status === 'refused' && 
+          <div className="my-2 alert-danger p-1 rounded" style={{width:'fit-content'}}>
+            Candidature non retenue
+            <XCircleFill className="pb-1 ml-1" /> 
+          </div>
+        }
       </div>
       <div class="p-3">
         <h6 className="mb-3">Compétences requises</h6>

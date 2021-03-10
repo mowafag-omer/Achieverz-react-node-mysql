@@ -67,6 +67,24 @@ export const loadExperiences = (id) => dispatch => {
   .catch(() => dispatch({ type: AUTH_ERROR }))
 }
 
+export const loadAllExperiences = () => dispatch => {
+  axios.get(`http://localhost:3001/fr/all-experiences`, { 
+    headers: {
+      'Content-Type': 'application/json',
+      'auth' : localStorage.getItem('token')
+    }
+  })
+  .then((res) => {
+    res.status === 204 && dispatch({ type: EX_NOT_FOUNDED })
+    res.status === 200 && 
+      dispatch({ 
+        type: EXPERIENCES_LOADED,
+        payload: res.data
+      })
+  })
+  .catch(() => dispatch({ type: AUTH_ERROR }))
+}
+
 export const frCreateProfile = (body, exps, token) => dispatch => {
   axios.post('http://localhost:3001/fr/create-profile', body)
   .then((res) => { 

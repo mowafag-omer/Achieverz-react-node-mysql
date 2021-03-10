@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useLocation, useHistory } from 'react-router-dom'
-import { ArrowLeft, Person, GeoAlt, Clock } from 'react-bootstrap-icons'
+import { ArrowLeft, Person, GeoAlt, Clock, CheckCircle, XCircleFill } from 'react-bootstrap-icons'
 import { AddApplication } from '../../../store/actions/projectAction'
 
 
@@ -12,6 +12,7 @@ const FrOpenProject = () => {
   const location = useLocation()
   const history = useHistory()
   const project = location.project
+  const status = location.status
   const cateName = proStore.categories.filter(c => c.id === parseInt(project.required_category))[0].category_name 
   const isApplied = proStore.applications ? proStore.applications.filter(a => a.project_id === project.id) : []
 
@@ -53,9 +54,17 @@ const FrOpenProject = () => {
             <button className="btn mx-sm-auto" style={{width:'180px'}} onClick={handleApplying}>
               Postuler
             </button> :
-            <button className="btn mx-sm-auto" style={{minWidth:'150px'}}disabled>
+            status === 'confirmed' ?
+            <div class="alert alert-success mx-sm-auto" role="alert">Vous avez été choisi pour ce projet</div> :
+            status === 'refused' ?
+            <div class="alert alert-danger mx-sm-auto" role="alert">
+              Candidature non retenue
+              <XCircleFill className="ml-2" />
+            </div> :
+            <div class="alert alert-primary mx-sm-auto" role="alert">
               Candidature envoyée
-            </button>
+              <CheckCircle className="ml-2" />
+            </div>
           } 
         </div>
       </div>

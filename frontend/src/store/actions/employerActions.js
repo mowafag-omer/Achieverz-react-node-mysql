@@ -3,7 +3,8 @@ import {
   EM_CREATE_SUCCESS,
   AUTH_ERROR,
   EMPLOYER_LOADED,
-  EM_NOT_FOUNDED
+  EM_NOT_FOUNDED,
+  EMPLOYERS_LOADED
 } from "../types"
 import { loadUser } from '../../store/actions/authActions'
 // import { returnErrors } from './errorActions'
@@ -30,6 +31,23 @@ export const loadEmployer = (id) => dispatch => {
       dispatch({ 
         type: EMPLOYER_LOADED,
         payload: res.data[0]
+      })
+  })
+  .catch(() => dispatch({ type: AUTH_ERROR }))
+}
+
+export const loadAllEmployer = () => dispatch => {
+  axios.get(`http://localhost:3001/em/employers`, { 
+    headers: {
+      'Content-Type': 'application/json',
+      'auth' : localStorage.getItem('token')
+    }
+  })
+  .then((res) => {
+    res.status === 200 && 
+      dispatch({ 
+        type: EMPLOYERS_LOADED,
+        payload: res.data
       })
   })
   .catch(() => dispatch({ type: AUTH_ERROR }))

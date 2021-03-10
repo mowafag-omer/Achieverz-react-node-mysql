@@ -16,7 +16,7 @@ const Project = () => {
   const pro = projects.projects.filter(p => p.id === parseInt(location.state.id))[0]
   const cateName = (id) => projects.categories.filter(c => c.id === parseInt(id))[0].category_name 
 
-  let  applications = projects.applications.filter(a => a.project_id === pro.id) || []
+  let  applications = projects.applications.filter(a => a.project_id === pro.id && a.status !== 'refused') || []
   pro.project_status === 'confirmed' && (applications =  applications.filter(a => a.status === 'hired') || []) 
 
   const profile = (id) =>  profiles.filter(p => p.user_id === id)[0]
@@ -29,17 +29,20 @@ const Project = () => {
     }
   }
     
-  const handlePreHiring = (applicationId, userid) =>{
-    dispatch(updateApplicationStatus(applicationId, userid, 'hired'))
+  const handlePreHiring = (applicationId, userid, status) =>{
+    dispatch(updateApplicationStatus(applicationId, userid, status))
     applications.filter(a => a.status === 'hired' && a.project_id === pro.id)
   } 
   
   const handleProjectUpdating = (projectId, userid) =>{
-    const preHied = applications.filter(a => a.status === 'hired' && a.project_id === pro.id)
+    const preHied = applications.filter(a => a.status === 'hired' && a.project_id === pro.id) || []
+    const refused = applications.filter(a => a.status === 'pending' && a.project_id === pro.id) || []
+
     !applications.length ? alert('Aucune candidature pour ce projet !') :
-    !preHied.length && alert('Vous devriez choisir un freelance !')
-    dispatch(updateProjectStatus(projectId, userid, 'confirmed'))
+    !preHied.length ? alert('Vous devriez choisir un freelance !') :
+    dispatch(updateProjectStatus(projectId, userid, 'confirmed', refused)) &&
     alert('votre projet a été confirmé avec succès veuillez prendre contact avec les freelances choisis')
+    refused.forEach(a => console.log(a))
   } 
 
   const handledeleteProject = (projectId, id) =>{
@@ -112,10 +115,11 @@ const Project = () => {
                   <div className="ml-sm-auto mt-3 mt-sm-1">
                   {
                     appli.status === "pending" ? <>
-                    <button className="ms-auto btn bg-danger mr-2">Refuser</button>
-                    <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId)}>Recruter</button></>:
-                    appli.status === "hired" &&
-                    <button className="ms-auto btn" disabled>pré-recruté</button>
+                    <button className="ms-auto btn bg-danger mr-2" onClick={() => handlePreHiring(appli.id, user.userId, 'refused')}>Refuser</button>
+                    <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId, 'hired')}>Recruter</button></>:
+                    appli.status === "hired" && <>
+                    {pro.project_status === 'open' && <button className="ms-auto btn bg-danger mr-2">Refuser</button>} 
+                    <button className="ms-auto btn" disabled>pré-recruté</button></>
                   }
                   </div>
                   {

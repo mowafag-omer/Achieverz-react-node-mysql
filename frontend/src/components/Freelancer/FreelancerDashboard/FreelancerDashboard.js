@@ -9,15 +9,16 @@ const FreelancerDashboard = (props) => {
   const projects = useSelector(state => state.projects)
   const freelancer = useSelector(state => state.freelancer)
   const frProjects = projects.projects.filter(p => p.project_status === 'open' && parseInt(p.required_category) === freelancer.profile.category)
+  const hired = projects.applications ? projects.applications.filter(a => a.status === 'hired').length : []
+  const noNhired = projects.applications ? projects.applications.filter(a => a.status !== 'hired').length : []
   
+
   const getprojctId = (id) =>{
-    
     return projects.applications ? projects.applications.map(item => item.project_id === id ? id : 0)
     .includes(id) : id || 0
   }
   
   const frOpenProjects = frProjects.filter(elem => elem.id !== getprojctId(elem.id))
-  console.log(!!frOpenProjects.length);
 
   useEffect(() => {
     freelancer.hasNoProfile && props.history.push("/frcreateProfile")
@@ -27,22 +28,24 @@ const FreelancerDashboard = (props) => {
     <div className="flex-fill d-flex justify-content-between p-2" style={{minHeight: '76vh'}}>
       <div className="shadow-sm p-2 m-4 w-100">
         <h4>Recommandé pour vous</h4>
-        <p>Selon votre Domaines d'expériences</p>
+        <p>Selon votre domaine d'expériences</p>
         {frOpenProjects.length ? 
           frOpenProjects.map(project => 
             <Link key={project.id} className="link" to={{ pathname: 'FrOpenProject', project: project}}>
-              <FrProjectPrev project={project} />
+              <FrProjectPrev status="" project={project} />
             </Link>
           ):
           <div className="mx-auto mt-5 d-flex flex-column align-items-center alerty py-2 w-75">
             <Search size={50} className="mb-4" />
-            <p className="text-center">Non Recommandé Selon votre Domaines d'expériences !</p> 
-            <button className='btn'>Trouvez un Project</button>
+            <p className="text-center">Non projets disponible dons Domaines d'expériences !</p> 
+            <button className="btn">
+              <Link to='/OpenProjects' className="text-light link" >Trouver un Projet</Link>
+            </button>
           </div>
         }
       </div>
       <div className="col-3 mt-3 d-none d-lg-block">
-        <FrProfileWidget />
+        <FrProfileWidget hired={hired} noNhired={noNhired} profile={freelancer.profile} />
       </div>
     </div>
   )

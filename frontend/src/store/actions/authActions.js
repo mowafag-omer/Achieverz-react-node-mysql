@@ -12,9 +12,10 @@ import {
   CLEAR_EMPLOYER,
   CLEAR_FREELANCER 
 } from '../types'
-import { loadEmployer } from './employerActions'
-import { loadFreelancer, loadExperiences, loadAllFreelancer } from './freelancerActions'
-import { loadAllProjects, 
+import { loadEmployer, loadAllEmployer } from './employerActions'
+import { loadFreelancer, loadExperiences, loadAllFreelancer, loadAllExperiences } from './freelancerActions'
+import { 
+  loadAllProjects, 
   loadProjects, 
   loadFrApplication, 
   loadEmApplication, 
@@ -48,6 +49,13 @@ export const loadUser = (token) => (dispatch) => {
         dispatch(loadAllProjects())
         dispatch(loadExperiences(userId))
         dispatch(loadFreelancer(userId))
+      } else {
+        dispatch(loadCategories())
+        dispatch(loadskills())        
+        dispatch(loadAllProjects())
+        dispatch(loadAllExperiences())
+        dispatch(loadAllEmployer())
+        dispatch(loadAllFreelancer())
       }
     })
   } else {

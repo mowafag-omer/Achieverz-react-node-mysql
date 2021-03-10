@@ -11,7 +11,7 @@ import {
 } from "../types"
 
 const initialState = {
-  hasNoProfile: true,
+  hasNoProfile: false,
   profile: null,
   experiences: [],
   allprofiles: [],

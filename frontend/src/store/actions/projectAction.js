@@ -51,14 +51,17 @@ export const postProject = (project, userId) => dispatch => {
   })
 } 
 
-export const updateProjectStatus = (projectId, userId, status) => dispatch => {
+export const updateProjectStatus = (projectId, userId, status, refused) => dispatch => {
   axios.put(`http://localhost:3001/project/update-project/${projectId}`, {status}, { 
     headers: {
       'Content-Type': 'application/json',
       'auth' : localStorage.getItem('token')
     }
   })
-  .then((res) => dispatch(loadProjects(userId)))
+  .then((res) => {
+    dispatch(loadProjects(userId))
+    refused.forEach(a => dispatch(updateApplicationStatus(a.id, userId, 'refused')))
+  })
 }
 
 export const updateApplicationStatus = (applicationId, userId, status) => dispatch => {

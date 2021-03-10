@@ -21,6 +21,8 @@ const Loading = (props) => {
         props.history.push("/EmployerDashboard") : 
         user.loaded && freelancer.profileLoaded && user.type === 'freelancer' ?
         props.history.push("/freelancerDashboard") :
+        user.loaded && freelancer.allprofilesLoaded && user.type === 'admin' ?
+        props.history.push("/adminDashboard") :
         <Spinner className="my-auto" animation="grow" />
       } 
     </div>

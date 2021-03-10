@@ -60,14 +60,17 @@ const Signin = (props) => {
                 {error => <div className="text-danger">{error}</div>}
               </ErrorMessage>
             </div>
-
-            <button className="btn btn-success" type='submit'>Se connecter</button>
+            <div className="d-flex">
+            <button className="btn btn-success ml-auto" type='submit'>Se connecter</button>
+            </div>
             
           </Form>      
         )}}
         </Formik>  
         <hr className="w-100 mt-5"></hr>
-        <p className='text-center mt-2'>Vous n'avez pas de compte ? <Link to='/Signup'>S'inscrire</Link></p>
+        {props.location.pathname !== '/admin' && 
+          <p className='text-center mt-2'>Vous n'avez pas de compte ? <Link to='/Signup'>S'inscrire</Link></p>
+        }
       </div>
     </div>
   )

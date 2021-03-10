@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom'
 import { Search } from 'react-bootstrap-icons'
 import ProjectPreview from '../ProjectPreview/ProjectPreview'
 import ProfileWidget from '../EmProfileWidget/EmProfileWidget'
+import PostProject from '../PostProject/PostProject'
 
 import './EmProjects.css'
 
@@ -13,9 +14,9 @@ const EmProjects = () => {
   const employer = useSelector(state => state.employer)
   const location = useLocation()
   const protState = location.state
-  const openProjects = projects.projects.filter(p => p.project_status === protState.project)
+  const openProjects = projects.projects.filter(p => p.project_status === protState.project) || []
 
-  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id).length : []
+  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id && a.status !== 'refused').length : []
 
   const Info = {
     name: `${employer.employer.first_name} ${employer.employer.last_name}`,
@@ -40,7 +41,7 @@ const EmProjects = () => {
           <div className="mx-auto mt-5 d-flex flex-column align-items-center alerty py-2 w-75">
           <Search size={50} className="mb-4" />
           <p className="text-center">Vous avez aucun projet ouvert pour l'instant !</p> 
-          <button className='btn'>Postez un Project</button>
+            <PostProject />
           </div>
         }
       </div>

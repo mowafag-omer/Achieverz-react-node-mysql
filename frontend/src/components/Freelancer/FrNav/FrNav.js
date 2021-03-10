@@ -29,7 +29,7 @@ const FrNav = () => {
               />
             </div>
           } id="collasible-nav-dropdown">
-            <NavDropdown.Item href="">Profile</NavDropdown.Item>
+            <NavDropdown.Item href="">Profil</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnecter</NavDropdown.Item>
           </NavDropdown>
@@ -47,10 +47,16 @@ const FrNav = () => {
               Dashboard
             </Link> 
             <Link 
-              to="/FrProjects" 
-              className={`nav-link mx-auto ${location.pathname === '/FrProjects' && 'nav-active'}`}
+              to="/FrConfirmedProjects" 
+              className={`nav-link mx-auto ${location.pathname === '/FrConfirmedProjects' && 'nav-active'}`}
             >
-              Mes projects
+              Projets confirmés
+            </Link> 
+            <Link 
+              to="/FrApplications" 
+              className={`nav-link mx-auto ${location.pathname === '/FrApplications' && 'nav-active'}`}
+            >
+              Mes candidatures
             </Link> 
           </Nav>
         </Navbar.Collapse>          

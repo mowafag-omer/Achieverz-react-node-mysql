@@ -49,7 +49,7 @@ const EmCreateProfile = (props) => {
       values.location = ''
     }
     dispatch(emCreateProfile(values, user.token, user.userId))
-    props.history.push("/EmployerDashboard")
+    props.history.push("/loading")
   }
 
   return (

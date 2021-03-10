@@ -15,7 +15,13 @@ import EmProfile from '../components/Employer/EmProfile/EmProfile'
 import FrCreateProfile from '../components/Freelancer/FrCreateProfile/FrCreateProfile'
 import FreelancerDashboard from '../components/Freelancer/FreelancerDashboard/FreelancerDashboard'
 import FrOpenProject from '../components/Freelancer/FrOpenProject/FrOpenProject'
+import FrConfirmedProjects from '../components/Freelancer/FrConfirmedProjects/FrConfirmedProjects'
+import FrApplications from '../components/Freelancer/FrApplications/FrApplications'
 import OpenProjects from '../components/OpenProjects/OpenProjects'
+import AdminDashboard from '../components/Admin/AdminDashboard/AdminDashboard'
+import Freelancers from '../components/Admin/Freelancers/Freelancers'
+import AFrProfile from '../components/Admin/Freelancers/AFrProfile'
+import Employers from '../components/Admin/Employers/Employers'
 
 const Routes = () => {
   return (
@@ -33,9 +39,15 @@ const Routes = () => {
         <PrivateRoute path="/emProfile" component={EmProfile} user="employer" />
         <PrivateRoute path="/frCreateProfile" component={FrCreateProfile} user="freelancer" />
         <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} user="freelancer" />
+        <PrivateRoute path="/FrConfirmedProjects" component={FrConfirmedProjects} user="freelancer" />
+        <PrivateRoute path="/FrApplications" component={FrApplications} user="freelancer" />
         <Route path="/OpenProjects" component={OpenProjects} />
         <PrivateRoute path="/FrOpenProject" component={FrOpenProject} user="freelancer" />
         <Route path="/admin" component={Signin} />
+        <PrivateRoute path="/adminDashboard" component={AdminDashboard} user="admin" />
+        <PrivateRoute path="/freelancers" component={Freelancers} user="admin" />
+        <PrivateRoute path="/Afrprofile" component={AFrProfile} user="admin" />
+        <PrivateRoute path="/AEmprofile" component={Employers} user="admin" />
       </Switch>
       <Footer />
     </Router>

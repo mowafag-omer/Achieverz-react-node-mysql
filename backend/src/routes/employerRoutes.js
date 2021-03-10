@@ -25,6 +25,19 @@ router.post('/create-profile', (req, res) => {
   })
 })
 
+.get('/employers', checkAuth, (req, res) => {
+  const sql = 'SELECT * FROM employers_profiles'
+
+  db.query(sql, (err, results) => {
+    if(err) throw err
+    if(results.length) {
+      res.status(200).json(results)
+    } else {
+      res.status(204).json("No Content")
+    }
+  })
+})
+
 .put('/update-profile/:id', (req, res) => {
   const data = req.body
   const fields = Object.keys(data).map(e => data[e] && `${e} = "${data[e]}"`).join(', ')

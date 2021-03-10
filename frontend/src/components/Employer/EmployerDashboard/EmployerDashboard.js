@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import { Search } from 'react-bootstrap-icons'
 import ProjectPreview from '../ProjectPreview/ProjectPreview'
 import ProfileWidget from '../EmProfileWidget/EmProfileWidget'
+import PostProject from '../PostProject/PostProject'
 
 export const EmployerDashboard = (props) => {
   const employer = useSelector(state => state.employer)
   const projects = useSelector(state => state.projects)
   const categories = useSelector(state => state.projects.categories)
-  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id).length : []
+  const applications = (id) => projects.applications ? projects.applications.filter(a => a.project_id === id && a.status !== 'refused' ).length : []
       
   const recentPro = projects.projects.sort((a, b) => {
     const dateA = new Date(a.posting_date), dateB = new Date(b.posting_date)
@@ -30,7 +31,7 @@ export const EmployerDashboard = (props) => {
   return (
     <div className="em-projects p-2 d-flex justify-content-between" style={{minHeight: '76vh'}}>
       <div className="overflow-auto shadow-sm p-4 mr-4 w-100">
-        <h4 className="mb-4">Projets récents</h4>
+        <h4 className="page-title pl-2 mb-4">Projets récents</h4>
         {!!recentPro ?
           <Link to={{ pathname: 'project',
               state: {project: recentPro.project_status, id: recentPro.id}
@@ -41,7 +42,7 @@ export const EmployerDashboard = (props) => {
           <div className="mx-auto mt-5 d-flex flex-column align-items-center alerty py-2 w-75">
           <Search size={50} className="mb-4" />
           <p className="text-center">Vous avez aucun projet ouvert pour l'instant !</p> 
-          <button className='btn'>Postez un Project</button>
+            <PostProject />
           </div>
         }
         
