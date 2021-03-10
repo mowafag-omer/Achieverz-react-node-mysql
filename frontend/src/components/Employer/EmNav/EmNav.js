@@ -31,7 +31,7 @@ const EmNav = () => {
           } id="collasible-nav-dropdown">
             <Link to="/emProfile" className="dropdown-item">Profil</Link>
             <NavDropdown.Divider />
-            <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnecter</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnexion</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>
@@ -47,8 +47,8 @@ const EmNav = () => {
               Dashboard
             </Link> 
             {[
-              {project: 'open', title: 'Projets Ouverts'},
-              {project: 'confirmed', title: 'Projets Confirmés'}
+              {project: 'open', title: 'Projets ouverts'},
+              {project: 'confirmed', title: 'Projets confirmés'}
               ].map(p => 
                 <Link 
                   to={{

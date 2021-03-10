@@ -11,7 +11,7 @@ const Banner = () => {
         <h1>Trouver & Recruter</h1>
         <div className="row">
           <p className="col-11 col-md-8 col-lg-6">
-            Êtes-vous un employeur à la recherche d'un.e développeur.se freelance ou vous êtes un.e développeur.se ouvert au travail ?
+            Êtes-vous un employeur à la recherche d'un freelance dans le domaine du numérique ou vous êtes un freelance ouvert au travail ?
           </p>
         </div>
         <div className="row">

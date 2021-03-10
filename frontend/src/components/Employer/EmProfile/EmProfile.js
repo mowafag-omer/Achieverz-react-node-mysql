@@ -19,7 +19,7 @@ const EmProfile = () => {
         </div>
         <div className="w-50">
           <h6>Nom</h6>
-          <span>{employer.first_name}</span>
+          <span>{employer.last_name}</span>
         </div>
       </div>
 

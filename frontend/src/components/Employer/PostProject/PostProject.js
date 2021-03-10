@@ -24,12 +24,12 @@ const PostProject = ({classes, props}) => {
   }
 
   const validationSchema = Yup.object({
-    project: Yup.string().required('Required'),
-    description: Yup.string().required('Required'),
-    sector: Yup.string().required('Required'),
-    payBy: Yup.string().required('Required'),
-    min: Yup.number().required('Required').positive(),            
-    max: Yup.number().required('Required').positive()            
+    project: Yup.string().required('requis'),
+    description: Yup.string().required('requis'),
+    sector: Yup.string().required('requis'),
+    payBy: Yup.string().required('requis'),
+    min: Yup.number().required('requis').positive('Il doit être un nombre positif'),            
+    max: Yup.number().required('requis').positive('Il doit être un nombre positi')            
   })
 
   const onSubmit = (values) => {
@@ -64,18 +64,18 @@ const PostProject = ({classes, props}) => {
 
             <div className='form-group shadow-sm p-2 border rounded'>
               <label htmlFor="Description" className="form-label">Description</label>
-              <Field as='textarea' id="Description" name='description' placeholder="Choisissez un nom pour votre projet" 
+              <Field as='textarea' id="Description" name='description' placeholder="décrivez votre projet" 
                 className={`form-control ${touched.description && errors.description && 'border-danger'}`} 
               />
               <ErrorMessage name='description'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
 
             <div className='form-group shadow-sm p-2 border rounded'>
-              <label htmlFor="Sector" className="form-label">Secteur</label>
+              <label htmlFor="Sector" className="form-label">Domaine</label>
               <Field as='select' id="Sector" name='sector' 
                 className={`form-control w-50 ${touched.sector && errors.sector && 'border-danger'}`}
               >
-                <option value="">Choisissez un secteur</option>
+                <option value="">Choisissez un domaine</option>
                 {projects.categories.map(category => 
                   <option value={category.id}>{category.category_name}</option>
                 )}

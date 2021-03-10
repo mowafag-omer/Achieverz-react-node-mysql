@@ -31,7 +31,7 @@ const FrNav = () => {
           } id="collasible-nav-dropdown">
             <NavDropdown.Item href="">Profil</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnecter</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => dispatch(signOut())}>Déconnexion</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>

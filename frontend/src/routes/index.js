@@ -12,6 +12,7 @@ import EmployerDashboard from '../components/Employer/EmployerDashboard/Employer
 import EmProjects from '../components/Employer/EmProjects/EmProjects'
 import Projects from '../components/Employer/Project/Project'
 import EmProfile from '../components/Employer/EmProfile/EmProfile'
+import CandidateProfile from '../components/Employer/CandidateProfile/CandidateProfile'
 import FrCreateProfile from '../components/Freelancer/FrCreateProfile/FrCreateProfile'
 import FreelancerDashboard from '../components/Freelancer/FreelancerDashboard/FreelancerDashboard'
 import FrOpenProject from '../components/Freelancer/FrOpenProject/FrOpenProject'
@@ -37,6 +38,7 @@ const Routes = () => {
         <PrivateRoute path="/EmProjects" component={EmProjects} user="employer" />
         <PrivateRoute path="/project" component={Projects} user="employer" />
         <PrivateRoute path="/emProfile" component={EmProfile} user="employer" />
+        <PrivateRoute path="/CandidateProfile" component={CandidateProfile} user="employer" />
         <PrivateRoute path="/frCreateProfile" component={FrCreateProfile} user="freelancer" />
         <PrivateRoute path="/freelancerDashboard" component={FreelancerDashboard} user="freelancer" />
         <PrivateRoute path="/FrConfirmedProjects" component={FrConfirmedProjects} user="freelancer" />

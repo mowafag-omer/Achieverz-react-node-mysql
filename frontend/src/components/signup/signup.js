@@ -26,10 +26,10 @@ const Signup = (props) => {
     type: ''
   }
   const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string().min(6, 'Password is too short - should be 6 chars minimum.').required('Required'),
-    confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'Passwords must match').required('Required'),
-    type: Yup.string().required('Required'),
+    email: Yup.string().email("Format d'email invalide").required('requis'),
+    password: Yup.string().min(6, 'Le mot de passe est trop court - doit contenir au moins 6 caractères.').required('requis'),
+    confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'les mots de passe doivent correspondre').required('requis'),
+    type: Yup.string().required('requis'),
   })
   const onSubmit = (values, actions) => {
     console.log(actions);
@@ -70,21 +70,21 @@ const Signup = (props) => {
             </div>
 
             <div className='mb-3'>
-              <Field type='email' id='email' name='email' placeholder="Adresse Email" 
+              <Field type='email' id='email' name='email' placeholder="Adresse email" 
                 className={touched.email && errors.email ? "border-danger form-control" : "form-control"} 
               />
               <ErrorMessage name='email'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
 
             <div className='mb-3'>
-              <Field type='password' id='password' name='password' placeholder="Mot de pass"
+              <Field type='password' id='password' name='password' placeholder="Mot de passe"
                 className={touched.password && errors.password ? "border-danger form-control" : "form-control"} 
               />
               <ErrorMessage name='password'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>
             </div>
 
             <div className='mb-3'>
-              <Field type='password' id='confirmPassword' name='confirmPassword' placeholder="Confirmation mot de pass"
+              <Field type='password' id='confirmPassword' name='confirmPassword' placeholder="Confirmation de mot de passe"
                 className={touched.confirmPassword && errors.confirmPassword ? "border-danger form-control" : "form-control"} 
               />
               <ErrorMessage name='confirmPassword'>{error => <div className="text-danger">{error}</div>}</ErrorMessage>

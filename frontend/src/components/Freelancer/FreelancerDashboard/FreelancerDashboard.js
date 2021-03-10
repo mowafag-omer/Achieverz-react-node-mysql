@@ -37,7 +37,7 @@ const FreelancerDashboard = (props) => {
           ):
           <div className="mx-auto mt-5 d-flex flex-column align-items-center alerty py-2 w-75">
             <Search size={50} className="mb-4" />
-            <p className="text-center">Non projets disponible dons Domaines d'expériences !</p> 
+            <p className="text-center">Non projets disponible !</p> 
             <button className="btn">
               <Link to='/OpenProjects' className="text-light link" >Trouver un Projet</Link>
             </button>

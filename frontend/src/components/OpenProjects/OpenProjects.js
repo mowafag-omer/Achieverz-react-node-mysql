@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector }from 'react-redux'
 import { useLocation, Link } from 'react-router-dom'
+import { Search } from 'react-bootstrap-icons'
 import './OpenProjects.css'
 
 const OpenProjects = () => {
@@ -26,7 +27,7 @@ const OpenProjects = () => {
       <h3 className="page-title py-0 pl-1 mb-4 ml-1">Trouver un Projet</h3>
       <div className="row justify-content-center shadow-sm m-3 p-3 rounded">
 
-        {frOpenProjects.map(pro => 
+        {frOpenProjects.length > 0 ? frOpenProjects.map(pro => 
           <Link key={pro.id} className="link" to={{ pathname: 'FrOpenProject', project: pro}}>
             <div className="card d-flex flex-column justify-content-between mb-3 mx-3 align-items-center p-3 shadow-sm hover-shadow">
               <h6 className="text-center">{pro.project_title}</h6>
@@ -46,8 +47,12 @@ const OpenProjects = () => {
               <hr className="w-50 my-1" style={{fontWeight:'200'}}/>
               <p className="ml-1 mr-2">il y a 2 jours</p>
             </div>
-          </Link>
-        )}
+          </Link>) :
+          <div className="mx-auto mt-5 d-flex flex-column align-items-center alerty py-2 w-75">
+          <Search size={50} className="mb-4" />
+          <p className="text-center">Non projets disponible !</p> 
+          </div>
+        }
         
       </div>
     </div>

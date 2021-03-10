@@ -16,8 +16,8 @@ const Project = () => {
   const pro = projects.projects.filter(p => p.id === parseInt(location.state.id))[0]
   const cateName = (id) => projects.categories.filter(c => c.id === parseInt(id))[0].category_name 
 
-  let  applications = projects.applications.filter(a => a.project_id === pro.id && a.status !== 'refused') || []
-  pro.project_status === 'confirmed' && (applications =  applications.filter(a => a.status === 'hired') || []) 
+  let  applications = projects.applications ?  projects.applications.filter(a => a.project_id === pro.id && a.status !== 'refused') : []
+  pro.project_status === 'confirmed' && (applications = applications ?  applications.filter(a => a.status === 'hired') : []) 
 
   const profile = (id) =>  profiles.filter(p => p.user_id === id)[0]
   const getSkills = (inputs) => {
@@ -102,45 +102,53 @@ const Project = () => {
           {!!applications.length && applications.map(appli => {
             const pf = profile(appli.freelancer_id)
             return(
-              <div key={appli.id} className="card shadow-sm pointer mb-3">
-                <div class="card-header d-flex flex-column flex-sm-row flex-wrap align-items-center">
-                  <img className="avatar mr-0 mr-sm-3" src={avatar} alt="Img de profile"/>
-                  <div className="mt-2">
-                    <h6 className="ml-2 m-0">
-                      {pf.first_name} &nbsp;
-                      {pf.last_name}
-                    </h6>
-                    <span className="mr-0 mr-sm-3 mt-2 d-block"><GeoAlt size={20} className="pb-1" />{pf.city}, {pf.country}</span>
-                  </div>
-                  <div className="ml-sm-auto mt-3 mt-sm-1">
-                  {
-                    appli.status === "pending" ? <>
-                    <button className="ms-auto btn bg-danger mr-2" onClick={() => handlePreHiring(appli.id, user.userId, 'refused')}>Refuser</button>
-                    <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId, 'hired')}>Recruter</button></>:
-                    appli.status === "hired" && <>
-                    {pro.project_status === 'open' && <button className="ms-auto btn bg-danger mr-2">Refuser</button>} 
-                    <button className="ms-auto btn" disabled>pré-recruté</button></>
-                  }
-                  </div>
-                  {
-                    appli.status === "hired" && pro.project_status === 'open' &&
-                    <span className="notification d-block mx-auto mt-2">* Pour valider votre choix veuillez confirmer et fermer ce project.</span>
-                  }
-                </div>
-                <div class="card-body">
-                  <h6>Domaine</h6>
-                  <p class="card-text">{cateName(pf.category)}</p>
-                  <h6>Compétences requises</h6>
-                  <div className="mt-3 d-flex flex-wrap">
-                    {getSkills(pf.skills) !== false ?
-                      getSkills(pf.skills).map((skill, index) => 
-                        <span key={index} className="text-center mr-1 mt-1 mt-md-0 py-1 px-2 border border-2"> {skill}</span>
-                      ) : 
-                      <p>Aucune compétence requise</p>
+              <Link 
+                className="link d-link"
+                to={{
+                  pathname: "/CandidateProfile",
+                  state: {frProfile: profile(appli.freelancer_id), category: cateName(pf.category), skills: getSkills(pf.skills)}
+                }} 
+              >
+                <div key={appli.id} className="card shadow-sm pointer mb-3">
+                  <div class="card-header d-flex flex-column flex-sm-row flex-wrap align-items-center">
+                    <img className="avatar mr-0 mr-sm-3" src={avatar} alt="Img de profile"/>
+                    <div className="mt-2">
+                      <h6 className="ml-2 m-0">
+                        {pf.first_name} &nbsp;
+                        {pf.last_name}
+                      </h6>
+                      <span className="mr-0 mr-sm-3 mt-2 d-block"><GeoAlt size={20} className="pb-1" />{pf.city}, {pf.country}</span>
+                    </div>
+                    <div className="ml-sm-auto mt-3 mt-sm-1">
+                    {
+                      appli.status === "pending" ? <>
+                      <button className="ms-auto btn bg-danger mr-2" onClick={() => handlePreHiring(appli.id, user.userId, 'refused')}>Refuser</button>
+                      <button className="ms-auto btn" onClick={() => handlePreHiring(appli.id, user.userId, 'hired')}>Recruter</button></>:
+                      appli.status === "hired" && <>
+                      {pro.project_status === 'open' && <button className="ms-auto btn bg-danger mr-2">Refuser</button>} 
+                      <button className="ms-auto btn" disabled>pré-recruté</button></>
+                    }
+                    </div>
+                    {
+                      appli.status === "hired" && pro.project_status === 'open' &&
+                      <span className="notification d-block mx-auto mt-2">* Pour valider votre choix veuillez confirmer et fermer ce project.</span>
                     }
                   </div>
+                  <div class="card-body">
+                    <h6>Domaine</h6>
+                    <p class="card-text">{cateName(pf.category)}</p>
+                    <h6>Compétences requises</h6>
+                    <div className="mt-3 d-flex flex-wrap">
+                      {getSkills(pf.skills) !== false ?
+                        getSkills(pf.skills).map((skill, index) => 
+                          <span key={index} className="text-center mr-1 mt-1 mt-md-0 py-1 px-2 border border-2"> {skill}</span>
+                        ) : 
+                        <p>Aucune compétence requise</p>
+                      }
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>

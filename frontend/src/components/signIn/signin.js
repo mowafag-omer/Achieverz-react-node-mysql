@@ -20,8 +20,8 @@ const Signin = (props) => {
   const initialValues = { email: '', password: '' }
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string().required('Required'),
+    email: Yup.string().email("Format d'email invalide").required('requis'),
+    password: Yup.string().required('requis'),
   })
 
   const onSubmit = (values, actions) => {
@@ -44,7 +44,7 @@ const Signin = (props) => {
           <Form className="w-75 mr-auto ml-auto">
 
             <div className='mb-3'>
-              <Field type='email' id='email' name='email' placeholder="Adresse Email"
+              <Field type='email' id='email' name='email' placeholder="Adresse email"
                 className={touched.email && errors.email ? "border-danger form-control" : "form-control"} 
               />
               <ErrorMessage name='email'>
@@ -53,7 +53,7 @@ const Signin = (props) => {
             </div>
 
             <div className='mb-3'>
-              <Field type='password' id='password' name='password' placeholder="Mode de pass"
+              <Field type='password' id='password' name='password' placeholder="Mode de passe"
                 className={touched.password && errors.password ? "border-danger form-control" : "form-control"} 
               />
               <ErrorMessage name='password'>

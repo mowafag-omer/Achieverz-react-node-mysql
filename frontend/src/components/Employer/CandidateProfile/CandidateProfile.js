@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { ArrowLeft, GeoAlt, Search } from 'react-bootstrap-icons'
+import { ArrowLeft } from 'react-bootstrap-icons'
 
-const AFrProfile = (props) => {
+const CandidateProfile = (props) => {
   const freelancer = useSelector(state => state.freelancer)
   const profile = props.location.state.frProfile
   const categoryName = props.location.state.category
@@ -89,8 +89,7 @@ const AFrProfile = (props) => {
 
         </div>
       </div>
-
-      {freelancer.experiences.length > 0 &&              
+      {freelancer.experiences.length > 0 &&           
       <div className="card mb-4">
         <div className="card-header d-flex justify-content-between">
           <h5>Expériences</h5>
@@ -111,8 +110,9 @@ const AFrProfile = (props) => {
           </div>
         </div>
       </div>}
+
     </div>
   )
 }
 
-export default AFrProfile
+export default CandidateProfile
