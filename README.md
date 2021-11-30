@@ -1,6 +1,6 @@
 # Achieverz
 
-My project consists of developing a professional platform that connects tech freelancers and employers who need their service. There are two types users and the administrator who manages the platform.
+The project consists of developing a professional platform that connects tech freelancers and employers who need their service. There are two types users and the administrator who manages the platform.
 
 
 The first user is the employer.  The platform allows him to create an account so that he can post projects.  Then, he can consult the profiles of the candidates and as soon as he finds a profile that suits him, he chooses one or more candidates.  After confirmation of the project, communication between the employer and the candidate will take place outside the platform.
